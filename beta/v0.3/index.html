@@ -1,0 +1,24 @@
+<!doctype html><html lang="es-CL"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>EcoTrenzas Garden V0.3 · Pruebas</title><style>body{margin:0;padding:30px;background:#f1f5ea;color:#234c38;font:600 17px system-ui}</style></head><body><p id="loading">🌱 Preparando el jardín de pruebas…</p><script>
+(async()=>{try{
+ const response=await fetch('../../index.html',{cache:'no-store'});
+ if(!response.ok)throw Error('No se pudo cargar la base V0.2: '+response.status);
+ let html=await response.text();
+ const patches=[
+ ["const KEY='ecotrenzas-garden-v0.2'","const KEY='ecotrenzas-garden-v0.3-preview'"],
+ ["migrated:false};","migrated:false,progress:null};"],
+ ["const raw=localStorage.getItem(KEY);if(raw)","const raw=localStorage.getItem(KEY)||localStorage.getItem('ecotrenzas-garden-v0.2');if(raw)"],
+ ["return {...clone(BASE),coins:","return {...clone(BASE),progress:v.progress||null,coins:"],
+ ["state.unlocked.push(id);const complete","state.unlocked.push(id);window.__ecov03?.onUnlock?.(id);const complete"],
+ ["state.coins+=9;state.plots[i]=null","const earned=window.__ecov03?.harvestCoins?.()??9;state.coins+=earned;state.plots[i]=null"],
+ ["state.plots[i]=null;save();render();showToast","state.plots[i]=null;window.__ecov03?.onHarvest?.(p.seed);save();render();showToast"],
+ ["¡Cosecha de ${SEEDS[p.seed].name}! +2 pigmentos · +9 monedas","¡Cosecha de ${SEEDS[p.seed].name}! +2 pigmentos · +${earned} monedas"],
+ ["state.equipped=id;save();setTab('avatar')","state.equipped=id;window.__ecov03?.onEquip?.(id);save();setTab('avatar')"],
+ ["if(name==='avatar')renderAvatar();window.scrollTo","if(name==='avatar')renderAvatar();window.__ecov03?.onTab?.(name);window.scrollTo"],
+ ["render();setInterval(","window.__ecogame={get state(){return state},save,render,setTab,showToast,SETS,SEEDS};render();setInterval("]
+ ];
+ for(const [from,to] of patches){if(html.split(from).length!==2)throw Error('La base cambió; revisión requerida: '+from);html=html.replace(from,to)}
+ html=html.replace('<head>','<head><base href="../../">').replace('Wooldreads V0.2','Wooldreads V0.3 · Pruebas').replace('Wooldreads edition · demo V0.2','Wooldreads edition · pruebas V0.3');
+ html=html.replace('</body>','<script src="beta/v0.3/extension.js"><\/script></body>');
+ document.open();document.write(html);document.close();
+ }catch(e){document.getElementById('loading').textContent='⚠️ No iniciamos la prueba: '+e.message;console.error(e)}})();
+</script></body></html>
