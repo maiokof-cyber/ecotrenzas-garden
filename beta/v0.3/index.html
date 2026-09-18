@@ -18,7 +18,7 @@
  ];
  for(const [from,to] of patches){if(html.split(from).length!==2)throw Error('La base cambió; revisión requerida: '+from);html=html.replace(from,to)}
  html=html.replace('<head>','<head><base href="../../">').replace('Wooldreads V0.2','Wooldreads V0.3 · Pruebas').replace('Wooldreads edition · demo V0.2','Wooldreads edition · pruebas V0.3');
- html=html.replace('</body>','<script src="beta/v0.3/extension.js"><\/script></body>');
+ html=html.replace('</body>','<script src="beta/v0.3/extension.js"><\/script><script>window.__ecogame?.render()<\/script></body>');
  document.open();document.write(html);document.close();
  }catch(e){document.getElementById('loading').textContent='⚠️ No iniciamos la prueba: '+e.message;console.error(e)}})();
 </script></body></html>
