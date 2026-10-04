@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "zone": "semillero-magico",
+  "status": "production-assets-in-progress",
+  "policy": {
+    "masterRoot": "art/masters",
+    "runtimeRoot": "public/assets/semillero",
+    "projectSourcesRemainMilestoneOnly": true
+  },
+  "assets": {
+    "node_base_v01": {
+      "type": "node-component",
+      "runtimePath": "public/assets/semillero/nodes/node_base_v01.png",
+      "masterPath": "art/masters/nodes/node_base_master_v01.png",
+      "status": "approved-local-pending-repo-binary"
+    },
+    "node_ring_v01": {
+      "type": "node-component",
+      "runtimePath": "public/assets/semillero/nodes/node_ring_v01.png",
+      "status": "pending"
+    },
+    "node_center_v01": {
+      "type": "node-component",
+      "runtimePath": "public/assets/semillero/nodes/node_center_v01.png",
+      "status": "pending"
+    }
+  }
+}
