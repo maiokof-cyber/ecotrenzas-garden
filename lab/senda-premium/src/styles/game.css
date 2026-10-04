@@ -1,0 +1,222 @@
+* { box-sizing: border-box; }
+
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #fff8df;
+  background: #10231d;
+  font-synthesis: none;
+}
+
+html, body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100%;
+  background:
+    radial-gradient(circle at 50% -10%, #416a4f 0, transparent 42%),
+    linear-gradient(180deg, #142b23 0%, #0d1b17 100%);
+}
+
+body { min-height: 100vh; }
+
+button { font: inherit; }
+
+.game-shell {
+  width: min(1180px, 100%);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 14px;
+  display: grid;
+  grid-template-rows: auto auto minmax(360px, 1fr) auto;
+  gap: 10px;
+}
+
+.hud-frame,
+.season-strip,
+.lab-footer {
+  border: 1px solid #8b6a3f;
+  background: linear-gradient(180deg, #3f2f20 0%, #271d16 100%);
+  box-shadow: inset 0 0 0 3px #16100c, 0 12px 28px #0005;
+}
+
+.hud-frame {
+  min-height: 72px;
+  border-radius: 18px 18px 10px 10px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.brand-lockup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-mark {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: #254f3b;
+  border: 2px solid #b89355;
+  font-size: 25px;
+}
+
+.brand-lockup small {
+  display: block;
+  color: #c8b58b;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.brand-lockup strong {
+  display: block;
+  font-family: Georgia, serif;
+  font-size: clamp(17px, 3vw, 25px);
+}
+
+.hud-values {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: end;
+}
+
+.hud-values span {
+  padding: 7px 10px;
+  border-radius: 999px;
+  border: 1px solid #6e5435;
+  background: #1a1510;
+  white-space: nowrap;
+  font-size: 13px;
+}
+
+.season-strip {
+  border-radius: 10px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.season-strip small {
+  color: #dfca97;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-weight: 800;
+  font-size: 9px;
+}
+
+.season-strip h1 {
+  margin: 2px 0 0;
+  font: 700 clamp(21px, 4vw, 31px)/1 Georgia, serif;
+}
+
+.xp-panel {
+  width: min(320px, 48%);
+  font-size: 11px;
+  color: #dfd1ad;
+  text-align: right;
+}
+
+.xp-track {
+  height: 8px;
+  margin-top: 6px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #18120e;
+  border: 1px solid #664b2e;
+}
+
+.xp-track i {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #8f68bd, #d8b86a);
+  transition: width .35s ease;
+}
+
+.game-host {
+  position: relative;
+  min-height: 420px;
+  overflow: hidden;
+  border: 5px solid #3a281b;
+  outline: 1px solid #9c7c4a;
+  border-radius: 12px;
+  background: #7da268;
+  box-shadow: inset 0 0 0 2px #17110d, 0 15px 34px #0006;
+}
+
+.game-host canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.lab-footer {
+  border-radius: 10px 10px 18px 18px;
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  color: #d6c7a5;
+  font-size: 11px;
+}
+
+.lab-footer button {
+  border: 1px solid #927142;
+  border-radius: 999px;
+  background: #1b1510;
+  color: #f8e9c7;
+  min-height: 36px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.lab-footer button:hover { background: #302318; }
+
+@media (max-width: 620px) {
+  .game-shell {
+    padding: 7px;
+    grid-template-rows: auto auto minmax(430px, 1fr) auto;
+  }
+
+  .hud-frame {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .hud-values { justify-content: flex-start; }
+
+  .season-strip {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .xp-panel {
+    width: 100%;
+    text-align: left;
+  }
+
+  .game-host { min-height: 430px; }
+
+  .lab-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    transition-duration: .001ms !important;
+  }
+}
