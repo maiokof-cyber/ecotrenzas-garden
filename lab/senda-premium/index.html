@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#13251f" />
+  <meta name="description" content="Laboratorio aislado de Senda Premium para EcoTrenzas Garden." />
+  <title>EcoTrenzas Garden · Senda Premium Lab</title>
+</head>
+<body>
+  <main class="game-shell" aria-label="EcoTrenzas Garden Senda Premium">
+    <header class="hud-frame">
+      <div class="brand-lockup">
+        <span class="brand-mark" aria-hidden="true">🌿</span>
+        <div>
+          <small>EcoTienda presenta</small>
+          <strong>EcoTrenzas Garden</strong>
+        </div>
+      </div>
+      <div class="hud-values" aria-live="polite">
+        <span>🏅 <b id="hud-level">1</b>/5</span>
+        <span>🪙 <b id="hud-coins">48</b></span>
+        <span>💎 <b id="hud-crystals">0</b></span>
+      </div>
+    </header>
+
+    <section class="season-strip">
+      <div>
+        <small>Zona 01 · Vertical Slice</small>
+        <h1>Semillero Mágico</h1>
+      </div>
+      <div class="xp-panel">
+        <span id="hud-status">Tu aventura comienza aquí</span>
+        <div class="xp-track"><i id="hud-xp"></i></div>
+      </div>
+    </section>
+
+    <section id="game-host" class="game-host" aria-label="Mapa interactivo de la senda"></section>
+
+    <footer class="lab-footer">
+      <span>🧪 Laboratorio aislado · Sin CRM, Booking, compras ni beneficios reales.</span>
+      <button id="reset-progress" type="button">Reiniciar laboratorio</button>
+    </footer>
+  </main>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
