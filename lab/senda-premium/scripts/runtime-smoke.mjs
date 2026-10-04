@@ -8,9 +8,14 @@ function assert(condition, message) {
 
 async function inspect(page, label, interactive = false) {
   const errors = [];
+  const network = [];
   page.on('pageerror', error => errors.push(`pageerror: ${error.message}`));
   page.on('console', message => {
     if (message.type() === 'error') errors.push(`console: ${message.text()}`);
+  });
+  page.on('requestfailed', request => network.push(`requestfailed: ${request.url()} :: ${request.failure()?.errorText || 'unknown'}`));
+  page.on('response', response => {
+    if (response.status() >= 400) network.push(`http${response.status()}: ${response.url()}`);
   });
 
   const response = await page.goto(URL, { waitUntil: 'networkidle' });
@@ -22,14 +27,35 @@ async function inspect(page, label, interactive = false) {
       { timeout: 10000 }
     );
   } catch (error) {
-    const diagnostic = await page.evaluate(() => ({
-      title: document.title,
-      canvasCount: document.querySelectorAll('#game-host canvas').length,
-      hostExists: Boolean(document.querySelector('#game-host')),
-      hookExists: Boolean(window.__SENDA_PREMIUM_TEST__)
-    })).catch(() => ({ title: '', canvasCount: -1, hostExists: false, hookExists: false }));
+    const diagnostic = await page.evaluate(async () => {
+      const script = document.querySelector('script[type="module"]');
+      let scriptProbe = null;
+      if (script?.src) {
+        try {
+          const response = await fetch(script.src, { cache: 'no-store' });
+          const body = await response.text();
+          scriptProbe = {
+            status: response.status,
+            contentType: response.headers.get('content-type'),
+            prefix: body.slice(0, 120)
+          };
+        } catch (probeError) {
+          scriptProbe = { error: String(probeError) };
+        }
+      }
+      return {
+        title: document.title,
+        canvasCount: document.querySelectorAll('#game-host canvas').length,
+        hostExists: Boolean(document.querySelector('#game-host')),
+        hookExists: Boolean(window.__SENDA_PREMIUM_TEST__),
+        scriptSrc: script?.src || '',
+        scriptProbe,
+        resources: performance.getEntriesByType('resource').map(entry => entry.name).slice(-20)
+      };
+    }).catch(() => ({ title: '', canvasCount: -1, hostExists: false, hookExists: false }));
     console.error(`RUNTIME_DIAGNOSTIC ${label} ${JSON.stringify(diagnostic)}`);
-    if (errors.length) console.error(`RUNTIME_JS_ERRORS ${label} ${errors.join(' | ')}`);
+    console.error(`RUNTIME_JS_ERRORS ${label} ${errors.length ? errors.join(' | ') : 'NONE'}`);
+    console.error(`RUNTIME_NETWORK ${label} ${network.length ? network.join(' | ') : 'NONE'}`);
     throw error;
   }
 
