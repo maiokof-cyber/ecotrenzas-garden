@@ -16,10 +16,22 @@ async function inspect(page, label, interactive = false) {
   const response = await page.goto(URL, { waitUntil: 'networkidle' });
   assert(response?.ok(), `${label}: HTTP no exitoso`);
 
-  await page.waitForFunction(
-    () => window.__SENDA_PREMIUM_TEST__?.ready === true,
-    { timeout: 10000 }
-  );
+  try {
+    await page.waitForFunction(
+      () => window.__SENDA_PREMIUM_TEST__?.ready === true,
+      { timeout: 10000 }
+    );
+  } catch (error) {
+    const diagnostic = await page.evaluate(() => ({
+      title: document.title,
+      canvasCount: document.querySelectorAll('#game-host canvas').length,
+      hostExists: Boolean(document.querySelector('#game-host')),
+      hookExists: Boolean(window.__SENDA_PREMIUM_TEST__)
+    })).catch(() => ({ title: '', canvasCount: -1, hostExists: false, hookExists: false }));
+    console.error(`RUNTIME_DIAGNOSTIC ${label} ${JSON.stringify(diagnostic)}`);
+    if (errors.length) console.error(`RUNTIME_JS_ERRORS ${label} ${errors.join(' | ')}`);
+    throw error;
+  }
 
   const initial = await page.evaluate(() => {
     const snapshot = window.__SENDA_PREMIUM_TEST__.snapshot();
@@ -75,7 +87,16 @@ async function inspect(page, label, interactive = false) {
   console.log(`RUNTIME_CASE_OK ${label} nodes=${initial.nodeCount} canvas=${Math.round(initial.canvas.cssWidth)}x${Math.round(initial.canvas.cssHeight)}`);
 }
 
-const browser = await chromium.launch({ headless: true });
+const browser = await chromium.launch({
+  headless: true,
+  args: [
+    '--enable-webgl',
+    '--ignore-gpu-blocklist',
+    '--enable-unsafe-swiftshader',
+    '--use-gl=angle',
+    '--use-angle=swiftshader'
+  ]
+});
 
 try {
   const mobile = await browser.newPage({ viewport: { width: 390, height: 844 } });
