@@ -25,8 +25,13 @@ export class SendaScene {
   }
 
   async mount(host) {
+    const rect = host.getBoundingClientRect();
+    const width = Math.max(1, Math.round(rect.width || host.clientWidth || this.season.width));
+    const height = Math.max(1, Math.round(rect.height || host.clientHeight || this.season.height));
+
     await this.app.init({
-      resizeTo: host,
+      width,
+      height,
       backgroundAlpha: 0,
       antialias: true,
       resolution: Math.min(window.devicePixelRatio || 1, 2),
@@ -40,7 +45,20 @@ export class SendaScene {
     this.buildWorld();
     this.layout();
 
-    window.addEventListener('resize', () => this.layout());
+    this.resizeObserver = new ResizeObserver(entries => {
+      const next = entries[0]?.contentRect;
+      if (!next || !this.app.renderer) return;
+
+      const nextWidth = Math.max(1, Math.round(next.width));
+      const nextHeight = Math.max(1, Math.round(next.height));
+
+      if (nextWidth !== this.app.screen.width || nextHeight !== this.app.screen.height) {
+        this.app.renderer.resize(nextWidth, nextHeight);
+        this.layout();
+      }
+    });
+    this.resizeObserver.observe(host);
+
     this.app.ticker.add(ticker => this.animate(ticker.deltaTime));
   }
 
