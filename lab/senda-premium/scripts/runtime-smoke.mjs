@@ -1,6 +1,7 @@
 import { chromium } from 'playwright';
 
 const URL = process.env.RUNTIME_URL || 'http://127.0.0.1:4173/';
+const HEADED = process.env.PW_HEADED === '1';
 
 function assert(condition, message) {
   if (!condition) throw new Error(message);
@@ -24,6 +25,7 @@ async function inspect(page, label, interactive = false) {
   try {
     await page.waitForFunction(
       () => window.__SENDA_PREMIUM_TEST__?.ready === true,
+      null,
       { timeout: 10000 }
     );
   } catch (error) {
@@ -95,7 +97,7 @@ async function inspect(page, label, interactive = false) {
     await page.waitForFunction(() => {
       const state = window.__SENDA_PREMIUM_TEST__?.snapshot();
       return state?.currentLevel === 2 && state?.coins === 73;
-    }, { timeout: 5000 });
+    }, null, { timeout: 5000 });
 
     const claimed = await page.evaluate(() => window.__SENDA_PREMIUM_TEST__.snapshot());
     assert(claimed.currentLevel === 2, `${label}: el click no avanzó al nivel 2`);
@@ -106,7 +108,7 @@ async function inspect(page, label, interactive = false) {
     await page.waitForFunction(() => {
       const state = window.__SENDA_PREMIUM_TEST__?.snapshot();
       return state?.currentLevel === 1 && state?.coins === 48;
-    }, { timeout: 5000 });
+    }, null, { timeout: 5000 });
   }
 
   assert(errors.length === 0, `${label}: errores JS: ${errors.join(' | ')}`);
@@ -115,7 +117,7 @@ async function inspect(page, label, interactive = false) {
 }
 
 const browser = await chromium.launch({
-  headless: true,
+  headless: !HEADED,
   args: [
     '--enable-webgl',
     '--ignore-gpu-blocklist',

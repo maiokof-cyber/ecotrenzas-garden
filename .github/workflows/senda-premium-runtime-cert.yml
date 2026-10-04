@@ -57,7 +57,7 @@ jobs:
             exit 1
           fi
 
-          npm run test:runtime
+          PW_HEADED=1 xvfb-run -a npm run test:runtime
           echo "RUNTIME_BROWSER_CERT_OK"
 
       - name: Show preview log on failure
