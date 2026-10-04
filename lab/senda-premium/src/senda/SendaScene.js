@@ -30,7 +30,9 @@ export class SendaScene {
       backgroundAlpha: 0,
       antialias: true,
       resolution: Math.min(window.devicePixelRatio || 1, 2),
-      autoDensity: true
+      autoDensity: true,
+      preference: 'webgl',
+      preferWebGLVersion: 2
     });
 
     host.appendChild(this.app.canvas);
