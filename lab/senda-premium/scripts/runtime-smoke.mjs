@@ -48,6 +48,7 @@ async function inspect(page, label, interactive = false) {
         canvasCount: document.querySelectorAll('#game-host canvas').length,
         hostExists: Boolean(document.querySelector('#game-host')),
         hookExists: Boolean(window.__SENDA_PREMIUM_TEST__),
+        boot: window.__SENDA_PREMIUM_BOOT__ || '',
         scriptSrc: script?.src || '',
         scriptProbe,
         resources: performance.getEntriesByType('resource').map(entry => entry.name).slice(-20)
