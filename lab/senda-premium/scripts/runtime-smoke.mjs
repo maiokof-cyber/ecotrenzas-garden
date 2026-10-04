@@ -22,6 +22,20 @@ async function inspect(page, label, interactive = false) {
   const response = await page.goto(URL, { waitUntil: 'networkidle' });
   assert(response?.ok(), `${label}: HTTP no exitoso`);
 
+  const webgl = await page.evaluate(() => {
+    const canvas = document.createElement('canvas');
+    const gl2 = canvas.getContext('webgl2');
+    const gl1 = gl2 ? null : canvas.getContext('webgl');
+    const gl = gl2 || gl1;
+    return {
+      webgl2: Boolean(gl2),
+      webgl1: Boolean(gl1),
+      renderer: gl ? String(gl.getParameter(gl.RENDERER) || '') : '',
+      vendor: gl ? String(gl.getParameter(gl.VENDOR) || '') : ''
+    };
+  });
+  console.log(`WEBGL_CAPABILITY ${label} ${JSON.stringify(webgl)}`);
+
   try {
     await page.waitForFunction(
       () => window.__SENDA_PREMIUM_TEST__?.ready === true,
