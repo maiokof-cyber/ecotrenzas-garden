@@ -4,6 +4,8 @@ import { Progression } from './core/Progression.js';
 import { Hud } from './ui/Hud.js';
 import { SendaScene } from './senda/SendaScene.js';
 
+window.__SENDA_PREMIUM_BOOT__ = 'main-start';
+
 const host = document.querySelector('#game-host');
 const progression = new Progression(season01);
 const hud = new Hud(progression, season01);
@@ -16,7 +18,9 @@ const scene = new SendaScene({
   }
 });
 
+window.__SENDA_PREMIUM_BOOT__ = 'before-scene-mount';
 await scene.mount(host);
+window.__SENDA_PREMIUM_BOOT__ = 'after-scene-mount';
 hud.render();
 
 document.querySelector('#reset-progress').addEventListener('click', () => {
