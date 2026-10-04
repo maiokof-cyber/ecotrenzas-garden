@@ -1,0 +1,65 @@
+name: Premium Senda Runtime Cert
+
+on:
+  push:
+    branches:
+      - lab/senda-premium-v1
+    paths:
+      - 'lab/senda-premium/**'
+      - '.github/workflows/senda-premium-runtime-cert.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  runtime-cert:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: lab/senda-premium
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Build
+        run: npm run build
+
+      - name: Chromium runtime smoke
+        run: |
+          npm run preview -- --host 127.0.0.1 --port 4173 > /tmp/senda-preview.log 2>&1 &
+          PREVIEW_PID=$!
+          trap 'kill "$PREVIEW_PID" 2>/dev/null || true' EXIT
+
+          READY=0
+          for i in {1..30}; do
+            if curl -fsS http://127.0.0.1:4173/ >/dev/null; then
+              READY=1
+              break
+            fi
+            sleep 1
+          done
+
+          if [ "$READY" -ne 1 ]; then
+            cat /tmp/senda-preview.log
+            exit 1
+          fi
+
+          npm run test:runtime
+          echo "RUNTIME_BROWSER_CERT_OK"
+
+      - name: Show preview log on failure
+        if: failure()
+        run: cat /tmp/senda-preview.log || true

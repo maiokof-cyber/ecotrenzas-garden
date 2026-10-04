@@ -24,3 +24,23 @@ document.querySelector('#reset-progress').addEventListener('click', () => {
   scene.refresh();
   hud.render('🌱 Laboratorio restaurado');
 });
+
+// Hook de diagnóstico exclusivo del laboratorio. No contiene datos comerciales,
+// credenciales ni autoridad de beneficios; permite certificar el renderer en CI.
+window.__SENDA_PREMIUM_TEST__ = {
+  ready: true,
+  snapshot() {
+    const target = season01.levels[1];
+    const scale = scene.world.scale.x;
+    return {
+      nodeCount: scene.nodesLayer.children.length,
+      currentLevel: progression.state.currentLevel,
+      coins: progression.state.coins,
+      crystals: progression.state.crystals,
+      node2: {
+        x: scene.world.x + target.x * scale,
+        y: scene.world.y + target.y * scale
+      }
+    };
+  }
+};
