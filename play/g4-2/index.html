@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="es-CL"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#15291e">
+<title>EcoTrenzas Garden — G4.2 · Senda Premium 2.5D + Atlas de Estilos</title><style>
+:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:#f5eed4;background:#0e1b15;font-synthesis:none}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 68% 0%,#49613b55,transparent 40%),linear-gradient(#152f22,#081710)}button,select{font:inherit}button{cursor:pointer}button:focus-visible{outline:3px solid #f5ce69;outline-offset:3px}button:disabled{cursor:not-allowed;opacity:.6}.shell{width:min(1200px,100%);margin:auto;padding:14px}.top{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:10px}.brand{display:flex;align-items:center;gap:10px}.sigil{height:53px;width:53px;border-radius:16px;background:linear-gradient(135deg,#357459,#17402a);border:2px solid #b5a06a;display:grid;place-items:center;font-size:25px;box-shadow:0 5px 0 #102116}.brand small,.intro small{font-size:10px;letter-spacing:.13em;color:#d1b87e;font-weight:800}.brand h1{font:bold clamp(20px,3vw,30px)/1.15 Georgia,serif;margin:2px 0}.wallet{display:flex;gap:7px;flex-wrap:wrap;justify-content:end}.wallet span{font-size:13px;padding:8px 10px;border:1px solid #836944;background:#28251a;border-radius:15px;white-space:nowrap}.intro{position:relative;min-height:180px;overflow:hidden;border:2px solid #b2945e;border-radius:18px;display:flex;align-items:end;justify-content:space-between;gap:20px;padding:22px;background:radial-gradient(circle at 75% 60%,#a4c47e88,transparent 35%),radial-gradient(ellipse at 95% 130%,#346b45 0 42%,transparent 43%),linear-gradient(155deg,#193c2d,#47754b 75%,#5f854c);box-shadow:inset 0 0 0 3px #17271c,0 12px 30px #0005}.intro:before{content:'✦  ✧   ✿   ❀';position:absolute;top:-28px;right:8%;transform:rotate(-8deg);font-size:104px;letter-spacing:18px;color:#dfdca330;pointer-events:none}.intro-copy{position:relative;z-index:1;max-width:630px}.intro h2{font:bold clamp(24px,4vw,40px)/1 Georgia,serif;margin:8px 0}.intro p{color:#e4eed7;font-size:13px;line-height:1.5;max-width:590px}.progress-summary{position:relative;z-index:1;min-width:220px;max-width:280px;border:1px solid #beac7a99;border-radius:14px;background:#112a20d9;padding:12px}.progress-summary strong{display:block;font:700 19px Georgia,serif}.progress-summary span{font-size:11px;color:#ddd8b0}.progress-meter{margin:10px 0 5px;height:10px;border:1px solid #9b8556;border-radius:100px;overflow:hidden;background:#102019}.progress-meter i{display:block;height:100%;background:linear-gradient(90deg,#73a66c,#e6c46e);width:0}.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:12px 0}.tabs button{border:1px solid #886f46;color:#dbd3b8;background:#2b382a;border-radius:12px;min-height:48px;font-weight:750}.tabs button[aria-current=page]{color:#182e20;background:#ecd29a;border-color:#f4e2b8;box-shadow:0 4px 0 #87663c}.stage{border:2px solid #93764a;border-radius:20px;padding:20px;min-height:450px;background:linear-gradient(#233c2d,#13271d);box-shadow:0 12px 24px #0005}.stage h2{font:700 clamp(25px,3vw,31px) Georgia,serif;margin:0 0 6px}.note{font-size:12px;color:#d7d6b9;margin:0 0 17px;max-width:780px;line-height:1.6}.panel{border:1px solid #6e6e4e;border-radius:15px;background:#173322ee;padding:14px}.grid2{display:grid;grid-template-columns:1.45fr 1fr;gap:15px}.seeds,.bag{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}.seeds button,.bag span{border:1px solid #78936c;border-radius:12px;background:#254b32;color:#f8ecd1;min-width:70px;text-align:center;padding:9px 8px;font-weight:700;font-size:11px}.seeds button.active{background:#e4c984;color:#233a24}.bag span{background:#1b382c;border-color:#456e51}.plots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.plot{position:relative;min-height:184px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;text-align:center;padding:14px 8px 18px;overflow:hidden;border:2px solid #a58d57;border-radius:19px;background:radial-gradient(ellipse 47% 30% at 50% 88%,#79552c 0 72%,#c49b52 73% 85%,transparent 86%),radial-gradient(circle at 75% 10%,#93bd728a,transparent 40%),linear-gradient(155deg,#518459,#274e3c);box-shadow:inset 0 0 0 3px #b9ca8996,0 8px 0 #0d261b;transform:perspective(400px) rotateX(4deg)}.plot small{color:#fbeccc;font-size:11px}.plot>span{font-size:42px;filter:drop-shadow(0 5px 4px #0015);animation:sway 3s ease-in-out infinite}.plot strong{font-size:14px;text-shadow:0 2px 4px #0008}.plot.locked{filter:grayscale(.6);opacity:.7}.plot .marker{position:absolute;top:10px;left:10px;background:#192b21bb;border-radius:8px;font-size:10px;padding:5px}.action{border:0;border-radius:11px;background:#efd09a;color:#263928;padding:9px 13px;min-height:37px;font-size:12px;font-weight:800;box-shadow:0 3px 0 #ae8651}.action.alt{background:#346b50;color:#f7e9c4;box-shadow:0 3px 0 #1d4b37}.cardgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.card{border:2px solid #988456;border-radius:16px;padding:9px;overflow:hidden;background:linear-gradient(150deg,#433b43,#232e2c);box-shadow:inset 0 0 0 2px #d5b87c52,0 7px 0 #0c2017}.card.owned{border-color:#eac56b}.cardpic{height:154px;border-radius:12px;display:grid;place-items:center;position:relative;overflow:hidden;background:radial-gradient(circle at 50% 30%,var(--tone),transparent 66%),linear-gradient(130deg,#1b2434,#392a3f);font-size:62px}.cardpic:after{content:'✧';font-size:125px;color:#ffffff1a;position:absolute;transform:rotate(-30deg)}.card h3{font:700 18px Georgia,serif;margin:10px 0 6px}.card p,.card small{font-size:11px;color:#dfd9c5;line-height:1.5}.card .ingredients{font-size:11px;background:#15241c;padding:7px;border-radius:8px;margin:7px 0}.card button{width:100%}.track-world{padding:25px 10px 5px;position:relative;border-radius:20px;overflow:hidden;background:radial-gradient(ellipse at 50% 0%,#c9c7823c,transparent 48%),linear-gradient(180deg,#48764d,#2b5a3d,#193e2b);box-shadow:inset 0 0 0 2px #a5b27f90}.track-world:before{content:'✦       ✿       ✦      ✧        ❀';position:absolute;top:25px;left:0;width:100%;text-align:center;font-size:35px;letter-spacing:18px;color:#e8d99666}.trackgrid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:28px 8px;position:relative;isolation:isolate;padding:15px 12px 38px}.trackgrid:before{content:'';position:absolute;inset:13px 5% 8px;border-radius:36%;border-left:20px dashed #bd8753a3;border-right:20px dashed #bd8753a3;transform:perspective(850px) rotateX(17deg);z-index:-1}.milestone{border:2px solid #be9d66;background:radial-gradient(circle at 50% 25%,#647b5e,#2e523e);border-radius:50%;width:min(95px,100%);aspect-ratio:1;justify-self:center;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#eee7cc;font-weight:800;box-shadow:0 6px 0 #2a3426,0 12px 13px #10251c;transform:perspective(260px) rotateX(12deg);text-shadow:0 2px 2px #0007;position:relative}.milestone.complete{background:radial-gradient(circle,#83ae78,#35674c);border-color:#dece8c}.milestone.next{background:radial-gradient(circle,#f7d87c,#ae7f46);border-color:#fff1b6;color:#1c3424;box-shadow:0 0 18px #f0df83,0 6px 0 #865f36}.milestone.epic{outline:3px solid #9174b2;outline-offset:3px}.milestone span{font:800 24px Georgia,serif}.milestone small{font-size:9px;color:inherit;text-align:center}.milestone[title]{cursor:help}.muted{color:#ccc5a6;font-size:11px}.style-options{display:flex;flex-wrap:wrap;gap:8px}.style-options button{border:1px solid #667b62;border-radius:13px;background:#214231;color:#f1e9ce;padding:10px 12px;font-size:12px}.style-options button.active{color:#182d1f;background:#e8cf96}.choice-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0}.choice{padding:12px;border:1px solid #a38e65;border-radius:14px;background:#293c33}.choice h3{font:700 18px Georgia,serif}.look-summary{background:#2b3d2e;border:1px solid #9f986d;border-radius:13px;padding:14px;line-height:1.6;font-size:13px}.foot{padding:16px 0;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;color:#bcb899;font-size:11px}.foot button{padding:8px;border:1px solid #88754e;border-radius:9px;background:#24372b;color:#f4e3ba}.toast{position:fixed;bottom:12px;left:50%;transform:translate(-50%,30px);opacity:0;pointer-events:none;transition:.2s;max-width:min(500px,95vw);background:#ecdaa5;color:#1b3925;padding:12px 16px;border-radius:13px;box-shadow:0 10px 30px #0009;font-size:12px;font-weight:800;text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}@keyframes sway{50%{transform:translateY(-4px)}}@media(max-width:700px){.top,.intro{align-items:start;flex-direction:column}.intro{padding:16px}.progress-summary{width:100%;max-width:none}.grid2{grid-template-columns:1fr}.cardgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.cardpic{height:115px}.trackgrid{grid-template-columns:repeat(5,minmax(0,1fr));gap:15px 3px;padding:20px 0 30px}.milestone{min-height:52px;box-shadow:0 3px 0 #2a3426}.milestone span{font-size:17px}.milestone small{font-size:7px}.choice-row{grid-template-columns:1fr}.stage{padding:12px}.tabs button{font-size:12px}.wallet{justify-content:start}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+/* G2 scene-only additions */
+.chapter-toolbar { display:flex;align-items:center;justify-content:space-between;gap:12px;margin:18px 0 0;padding:10px;border-radius:14px 14px 0 0;background:#284937;color:#ffedc7;border:1px solid #98764c; }
+.chapter-toolbar button { width:46px;min-width:46px;height:44px;border-radius:12px;border:1px solid #a17c4d;background:#60472b;color:white;font-size:24px;cursor:pointer; }
+.chapter-toolbar button:disabled {opacity:.3;cursor:default;}
+.chapter-toolbar>div {display:grid;gap:2px;text-align:center;}
+.chapter-toolbar small {font-size:10px;letter-spacing:.08em;opacity:.75;}
+.chapter-toolbar strong {font-size:clamp(14px,3vw,22px);font-family:Georgia,serif;}
+.chapter-toolbar span {font-size:11px;color:#e7d6ac;}
+.map-viewport {width:100%;height:auto;aspect-ratio:16 / 9;min-height:260px;background:#416d4c;outline:1px solid #ac8653;border:5px solid #3d2d1b;border-radius:0 0 15px 15px;overflow:hidden;}
+.node-summary {padding:13px 15px;border:1px solid #d4c29c;border-radius:12px;background:#faf1d6;color:#65492e;min-height:60px;font-size:13px;}
+.chapter-jump {display:flex;gap:6px;flex-wrap:wrap;}
+.chapter-jump button {font:700 11px system-ui;border:1px solid #b4c5a7;padding:9px 11px;background:#f3f9ea;border-radius:10px;cursor:pointer;color:#24533c;}
+.chapter-jump button.active {background:#285b43;color:white;}
+@media (max-width:600px){.map-viewport{min-height:230px}.chapter-toolbar{gap:4px;padding:6px}.chapter-toolbar button{min-width:36px;width:36px}.chapter-jump button{font-size:10px;padding:7px}}
+
+/* G3 art-directed UI: all additional layers are CSS/Canvas; no copied concept art. */
+.intro {border-color:#dbba77;background:radial-gradient(circle at 76% 22%,#c9b26b5c,transparent 35%),linear-gradient(120deg,#173a2a 5%,#2e6951 70%,#283c37);}
+.stage{border-color:#a88a59;}
+.map-viewport{border:7px ridge #936b39;border-radius:7px 7px 17px 17px;background:#253e32;box-shadow:inset 0 0 0 2px #d3b274,0 14px 26px #03140c66;aspect-ratio:16/9;min-height:250px;}
+.chapter-toolbar{background:linear-gradient(145deg,#6f4b2b,#3b2a1e 62%,#6b4728);border:2px solid #d1af72;border-radius:15px 15px 4px 4px;box-shadow:inset 0 0 0 3px #2c1b12;}
+.chapter-toolbar strong{color:#fff1cd;text-shadow:0 2px 3px #170c08;}
+.g3-node-controls{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin:12px 0;}
+.g3-node-controls button{min-height:44px;background:linear-gradient(#a17a43,#4c3826);border:2px solid #d5b477;border-radius:12px;color:#fff5d8;font:bold 19px Georgia,serif;box-shadow:0 3px 0 #20150d;}
+.g3-node-controls button:active{transform:translateY(2px);}
+.g3-prototype-disclaimer{font-size:11px;color:#cabf9e;line-height:1.5;margin:8px 0 14px;}
+.chapter-jump{gap:8px;}.chapter-jump button{background:#335846;color:#fff1d3;border-color:#b5a06d;min-height:43px;flex:1;}.chapter-jump button.active{background:#e6c686;color:#284332;}
+@media(max-width:600px){.map-viewport{min-height:205px;aspect-ratio:16/9;}.chapter-jump{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));}.g3-node-controls button{font-size:16px}.intro h2{line-height:1.06}}
+
+/* G3.1: mobile readable camera, larger viewport, touch-pan horizontally inside scene. */
+@media(max-width:600px){.map-viewport{height:302px;min-height:302px;aspect-ratio:auto;}.chapter-toolbar strong{font-size:15px}.g3-node-controls button{min-height:47px}}
+
+/* G4: editorial service atlas – no product photographs or commercial prices. */
+.g4-eyebrow{color:#c49d62;text-transform:uppercase;letter-spacing:.12em;font-weight:800;font-size:11px}
+.g4-service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:13px;margin:14px 0 24px}
+.g4-family{display:flex;flex-direction:column;gap:9px;padding:15px;border:1px solid #b8b48a;border-radius:17px;background:linear-gradient(145deg,#fffdf1,#e8f0dd);color:#1d4634;min-height:236px}
+.g4-family.g4-chosen{outline:3px solid #ae8845;outline-offset:-3px}
+.g4-service-icon{width:47px;height:47px;border-radius:50%;display:grid;place-items:center;background:#285943;color:#fff;font-size:25px}
+.g4-family h3{margin:2px 0 4px;font:800 21px/1.15 Georgia,serif}
+.g4-family small{text-transform:uppercase;font-weight:800;letter-spacing:.08em;opacity:.75}
+.g4-family p{font-size:13px;line-height:1.45;margin:6px 0}
+.g4-family .action{margin-top:auto;min-height:43px}
+.g4-explore-stamp{font-size:11px;font-weight:800;color:#3b7860}
+.g4-stamps{display:flex;flex-direction:column;gap:4px;padding:13px;border:1px dashed #8eb18e;border-radius:14px;background:#eef7e7;margin-top:15px;color:#1b4f36}
+.g4-stamps small{font-size:11px}
+.g4-handoff{background:#f6efd9;border:1px solid #c8ad78;border-radius:18px;padding:17px;color:#2d4c3e}
+.g4-handoff h3{margin:0 0 12px}
+.g4-handoff select{display:block;width:100%;max-width:360px;margin:7px 0 14px;padding:12px 10px;font:inherit;border-radius:10px;border:1px solid #baaa7d;background:#fff;color:#244b3b}
+.g4-handoff-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.g4-handoff-actions .action{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;min-height:44px}
+@media(max-width:620px){.g4-service-grid{grid-template-columns:1fr}.g4-handoff-actions>*{flex:1 1 100%}}
+
+/* G4.1 honest runtime diagnostics */
+.g4-renderer-status{margin:0;padding:8px 12px;background:#193a2c;border:1px solid #719b73;color:#e8f0d5;font:600 12px/1.5 system-ui,sans-serif;border-radius:9px;}
+
+</style></head>
+<body>
+<div class="shell"><header class="top"><div class="brand"><div class="sigil">🌿</div><div><small>ECOTIENDA · LABORATORIO G4</small><h1>EcoTrenzas Garden</h1></div></div><div class="wallet" id="wallet"></div></header>
+<section class="intro"><div class="intro-copy"><small>TEMPORADA 1 · SECRETOS DEL BOSQUE</small><h2>Tu camino entre trenzas, colores y magia</h2><p>Siembra pigmentos, colecciona seis cartas Wooldreads y recorre una senda de 30 niveles. Todo es virtual.</p></div><div class="progress-summary"><strong id="level">Nivel 1</strong><div class="progress-meter"><i id="xpbar"></i></div><span id="xpdetail"></span></div></section>
+<nav class="tabs" aria-label="Secciones del juego"><button data-tab="garden">🌱 Jardín</button><button data-tab="album">🎴 Álbum</button><button data-tab="track" aria-current="page">🏅 Senda</button><button data-tab="style">🪞 Mi estilo</button></nav>
+<main id="main" aria-live="polite"></main>
+<footer class="foot"><span>🧪 Senda G4.2 · Paisaje procedural en laboratorio; sin publicación ni compras. Sin abonos, descuentos, reservas, datos personales ni recompensas comerciales.</span><button type="button" id="import">Importar copia V0.3.1</button><button type="button" id="reset">Reiniciar laboratorio</button></footer>
+</div><div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script>
+// src/gameplay/GardenGameplay.mjs
+/* EcoTrenzas Garden / Senda Premium — Gameplay Gate G1
+ * Port verified against V0.2 / V0.3 / V0.3.1. Client-only simulation, no real benefits.
+ * This module has NO browser dependency: state transitions are testable in Node.
+ */
+const VERSION = 1;
+const MAX_LEVEL = 30;
+const MAX_XP = 7192;
+const STORAGE_KEY = 'ecotrenzas-senda-premium-gameplay-v1';
+const LEGACY_KEYS = ['ecotrenzas-garden-v0.3.1-preview', 'ecotrenzas-garden-v0.3-preview'];
+const SEEDS = Object.freeze({
+  rosa: { name: 'Rosa', icon: '🌺', duration: 14000 },
+  violeta: { name: 'Violeta', icon: '🪻', duration: 16500 },
+  azul: { name: 'Azul', icon: '💠', duration: 18000 },
+  menta: { name: 'Menta', icon: '🌿', duration: 20000 },
+  dorado: { name: 'Dorado', icon: '🌼', duration: 22000 }
+});
+const CARDS = Object.freeze([
+  { id:'niebla_invernal', name:'Niebla Invernal', desc:'Azules profundos y sombras de invierno', recipe:{azul:2,violeta:1}, motive:['naturalidad','practicidad'], rarity:'Épica' },
+  { id:'niebla_lavanda', name:'Niebla Lavanda', desc:'Degradado nocturno hacia lavanda', recipe:{violeta:2,rosa:1}, motive:['color','identidad'], rarity:'Épica' },
+  { id:'rosa_tentacion', name:'Rosa Tentación', desc:'Chocolate, frambuesa y rosa intenso', recipe:{rosa:3,dorado:1}, motive:['color','identidad'], rarity:'Épica' },
+  { id:'algodon_tentador', name:'Algodón Tentador', desc:'Caramelo, turquesa y violeta en armonía', recipe:{azul:2,dorado:2,violeta:1}, motive:['color','volumen'], rarity:'Épica' },
+  { id:'corriente_boreal', name:'Corriente Boreal', desc:'Azul y turquesa con destellos verdes', recipe:{azul:2,menta:2}, motive:['largo','practicidad'], rarity:'Épica' },
+  { id:'luna_malva', name:'Luna Malva', desc:'Bruma violeta, plata y magia lunar', recipe:{violeta:2,menta:1,rosa:1}, motive:['identidad','naturalidad'], rarity:'Épica' }
+]);
+const MOTIVES = Object.freeze([
+  { id:'largo', label:'Ganar largo' }, { id:'volumen', label:'Dar volumen' },
+  { id:'color', label:'Probar colores sin tinturas' }, { id:'practicidad', label:'Ganar tiempo cada mañana' },
+  { id:'naturalidad', label:'Lograr un efecto natural' }, { id:'identidad', label:'Expresar mi identidad' },
+  { id:'cabello', label:'Conversar sobre cabello corto o sensibilizado' }, { id:'explorar', label:'Explorar diseños' }
+]);
+// EXACT historic V0.3 formulas (keep intact until economy review).
+const xpFor = n => n <= 1 ? 0 : (n-1)*80 + 6*(n-2)*(n-1);
+const coinsFor = n => n <= 1 ? 0 : n <= 5 ? 40 : n <= 10 ? 60 : n <= 15 ? 70 : n <= 20 ? 80 : n <= 25 ? 90 : 100;
+const SPECIAL = Object.freeze({
+  5:'Macetero del bosque',8:'Marco botánico',10:'Cristal + Bosque nocturno',
+  13:'Farol del jardín',15:'Marco boreal',18:'Sendero decorativo',
+  20:'Cristal + tema nocturno',23:'Fuente ornamental',25:'Aura del avatar',
+  28:'Arco de hojas',30:'Cristal + insignia final'
+});
+const MISSION_TARGETS = Object.freeze([4,8]);
+const valid = (n, max=100000) => Number.isFinite(Number(n)) ? Math.min(max,Math.max(0,Math.floor(Number(n)))) : 0;
+const unique = list => [...new Set(list)];
+const dayKey = ms => { const d=new Date(ms); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; };
+function initialState(now=Date.now()) {
+  return {version:VERSION, coins:48, crystals:0, xp:0, paidLevel:1,
+    pigments:Object.fromEntries(Object.keys(SEEDS).map(k=>[k,0])),
+    plots:[null,null,null,null], chosen:'rosa', unlocked:[], equipped:null,
+    achievements:{}, daily:{day:dayKey(now),harvest:0,claimed:[]},
+    motive:'', favorites:[], selected:'', source:'new', lastAction:null};
+}
+function normalize(raw, now) {
+  const fresh=initialState(now);
+  if (!raw || raw.version !== VERSION || !Array.isArray(raw.plots) || !Array.isArray(raw.unlocked)) return fresh;
+  const s={...fresh,...raw};
+  s.coins=valid(raw.coins,1e7); s.crystals=valid(raw.crystals,99); s.xp=valid(raw.xp,MAX_XP);
+  s.paidLevel=Math.min(MAX_LEVEL,Math.max(1,valid(raw.paidLevel,MAX_LEVEL)));
+  s.pigments=Object.fromEntries(Object.keys(SEEDS).map(k=>[k,valid(raw.pigments?.[k],10000)]));
+  s.chosen=SEEDS[raw.chosen]?raw.chosen:'rosa';
+  const ids=new Set(CARDS.map(c=>c.id));
+  s.unlocked=unique(raw.unlocked.filter(id=>ids.has(id)));
+  s.equipped=s.unlocked.includes(raw.equipped)?raw.equipped:null;
+  s.plots=[0,1,2,3].map(i=>{
+    const p=raw.plots[i]; return p && SEEDS[p.seed] && Number.isFinite(Number(p.planted)) && Number(p.planted)>0
+      ? {seed:p.seed,planted:Number(p.planted),boost:valid(p.boost,60000),watered:!!p.watered} : null;
+  });
+  s.achievements={}; for(const k of ['firstHarvest','firstCard','fullAlbum','firstOutfit'])if(raw.achievements?.[k])s.achievements[k]=true;
+  s.daily=raw.daily?.day===dayKey(now)?{
+    day:dayKey(now),harvest:valid(raw.daily?.harvest,10000),
+    claimed:unique((Array.isArray(raw.daily?.claimed)?raw.daily.claimed:[]).filter(x=>['four','eight'].includes(x)))
+  }:fresh.daily;
+  s.motive=MOTIVES.some(m=>m.id===raw.motive)?raw.motive:'';
+  s.favorites=unique((Array.isArray(raw.favorites)?raw.favorites:[]).filter(x=>ids.has(x))).slice(0,3);
+  s.selected=ids.has(raw.selected)?raw.selected:'';
+  s.source=typeof raw.source==='string'?raw.source:'new';
+  return s;
+}
+function migrateLegacy(raw, now=Date.now(), source='preview') {
+  // READ-COPY ONLY: never mutate the V0.3.1/V0.3 localStorage key.
+  if (!raw || raw.version!==2 || !Array.isArray(raw.plots) || !Array.isArray(raw.unlocked)) throw new Error('Formato histórico incompatible; migración detenida');
+  const p=raw.progress && raw.progress.version===1?raw.progress:null;
+  const draft={...initialState(now),coins:raw.coins,crystals:p?.crystals||0,
+    xp:p?.xp??Math.min(MAX_XP,raw.unlocked.length*60),paidLevel:p?.paidLevel??1,
+    pigments:raw.pigments,plots:raw.plots,chosen:raw.chosen,unlocked:raw.unlocked,
+    equipped:raw.equipped,achievements:p?.achievements||{},daily:p?.daily||{},source};
+  return normalize(draft,now);
+}
+class GardenGameplay {
+  constructor({now=()=>Date.now(),storage=null,state=null}={}) {
+    this.now=now; this.storage=storage;
+    let raw=state;
+    if(raw==null && storage){try{raw=JSON.parse(storage.getItem(STORAGE_KEY)||'null');}catch{/* use fresh */}}
+    this.state=normalize(raw,this.now());
+  }
+  persist() { if(this.storage)this.storage.setItem(STORAGE_KEY,JSON.stringify(this.state)); }
+  snapshot() { this.rollDay();return JSON.parse(JSON.stringify(this.state)); }
+  level() { let level=1;while(level<MAX_LEVEL&&this.state.xp>=xpFor(level+1))level++;return level; }
+  rollDay() {
+    const d=dayKey(this.now());if(this.state.daily.day!==d){this.state.daily={day:d,harvest:0,claimed:[]};this.persist();}
+  }
+  awardXp(amount) {
+    if(!Number.isInteger(amount)||amount<=0)throw Error('XP inválida');
+    this.state.xp=Math.min(MAX_XP,this.state.xp+amount);
+    const leveled=[];
+    while(this.state.paidLevel<this.level()){
+      const l=++this.state.paidLevel;this.state.coins+=coinsFor(l);
+      if([10,20,30].includes(l))this.state.crystals++;
+      leveled.push({level:l,coins:coinsFor(l),crystal:[10,20,30].includes(l)});
+    }
+    this.persist();return leveled;
+  }
+  achievement(id) {
+    const config={firstHarvest:{xp:30},firstCard:{xp:30},fullAlbum:{crystal:1},firstOutfit:{xp:30}}[id];
+    if(!config||this.state.achievements[id])return false;
+    this.state.achievements[id]=true;
+    if(config.crystal)this.state.crystals+=config.crystal;
+    if(config.xp)this.awardXp(config.xp);
+    this.persist();return true;
+  }
+  chooseSeed(id) { if(!SEEDS[id])return false;this.state.chosen=id;this.persist();return true; }
+  plotUnlocked(index) {return Number.isInteger(index)&&index>=0&&index<4&&(index<3||this.state.unlocked.length===CARDS.length);}
+  plant(index,seed=this.state.chosen) {
+    if(!this.plotUnlocked(index)||this.state.plots[index]||!SEEDS[seed]||this.state.coins<4)return false;
+    this.state.coins-=4;this.state.plots[index]={seed,planted:this.now(),boost:0,watered:false};this.persist();return true;
+  }
+  water(index) {
+    const p=this.state.plots[index];if(!p||p.watered||this.isReady(index))return false;
+    p.watered=true;p.boost=Math.min(60000,p.boost+6000);this.persist();return true;
+  }
+  isReady(index) {
+    const p=this.state.plots[index];return Boolean(p&&this.now()-p.planted+p.boost>=SEEDS[p.seed].duration);
+  }
+  secondsLeft(index) {const p=this.state.plots[index];return !p?0:Math.max(0,Math.ceil((SEEDS[p.seed].duration-this.now()+p.planted-p.boost)/1000));}
+  harvest(index) {
+    this.rollDay();if(!this.isReady(index))return null;
+    const p=this.state.plots[index];
+    const coins=this.state.daily.harvest<10?9:4;
+    this.state.coins+=coins;this.state.pigments[p.seed]+=2;this.state.plots[index]=null;
+    this.state.daily.harvest++;
+    const earnedXp=this.state.daily.harvest<=10?12:0;
+    if(earnedXp)this.awardXp(earnedXp);
+    this.achievement('firstHarvest');
+    const missions=[];
+    for(const t of MISSION_TARGETS){const id=t===4?'four':'eight';
+      if(this.state.daily.harvest>=t&&!this.state.daily.claimed.includes(id)){
+        this.state.daily.claimed.push(id);this.state.coins+=25;this.awardXp(60);missions.push(id);
+      }
+    }
+    this.state.lastAction='harvest';this.persist();return {seed:p.seed,pigments:2,coins,xp:earnedXp,missions};
+  }
+  canUnlock(id) {const c=CARDS.find(c=>c.id===id);return Boolean(c&&!this.state.unlocked.includes(id)&&Object.entries(c.recipe).every(([k,v])=>this.state.pigments[k]>=v));}
+  unlock(id) {
+    if(!this.canUnlock(id))return false;
+    const c=CARDS.find(c=>c.id===id);
+    for(const [k,v] of Object.entries(c.recipe))this.state.pigments[k]-=v;
+    this.state.unlocked.push(id);
+    this.awardXp(60);this.achievement('firstCard');
+    if(this.state.unlocked.length===CARDS.length)this.achievement('fullAlbum');
+    this.state.lastAction='unlock';this.persist();return true;
+  }
+  equip(id) {if(!this.state.unlocked.includes(id))return false;this.state.equipped=id;this.achievement('firstOutfit');this.persist();return true;}
+  chooseMotive(id) {if(!MOTIVES.some(m=>m.id===id))return false;this.state.motive=id;this.persist();return true;}
+  select(id) {if(!CARDS.some(c=>c.id===id))return false;this.state.selected=id;this.persist();return true;}
+  favorite(id) {if(!CARDS.some(c=>c.id===id))return false;
+    const a=this.state.favorites;a.includes(id)?this.state.favorites=a.filter(x=>x!==id):this.state.favorites=[...a.filter(x=>x!==id),id].slice(-3);this.persist();return true;
+  }
+  discover(motive=this.state.motive) {return [...CARDS].sort((a,b)=>Number(b.motive.includes(motive))-Number(a.motive.includes(motive))).slice(0,3);}
+  copyFromLegacy(storage=this.storage) {
+    if(!storage)throw Error('Sin almacenamiento');
+    if(storage.getItem(STORAGE_KEY))throw Error('Ya existe una partida G1; no se sobrescribe');
+    for(const key of LEGACY_KEYS){const text=storage.getItem(key);if(!text)continue;
+      const parsed=JSON.parse(text);this.state=migrateLegacy(parsed,this.now(),key);this.persist();return key;
+    }
+    return null;
+  }
+}
+
+// src/data/g2-chapters.js
+/* G2 presentation only. Gameplay XP/economy remains in GardenGameplay.mjs. */
+const CHAPTERS = Object.freeze([
+  {id:'brote',name:'Bosque del Primer Brote',short:'El despertar',atmosphere:['#d9eea2','#81b273','#305b41'],levels:[1,2,3,4,5]},
+  {id:'pigmentos',name:'Laguna de Pigmentos',short:'Colores vivos',atmosphere:['#b7e1d6','#569999','#28556a'],levels:[6,7,8,9,10]},
+  {id:'flores',name:'Sendero de las Flores',short:'Trenzas florecidas',atmosphere:['#f5d6bd','#b98293','#4c5b54'],levels:[11,12,13,14,15]},
+  {id:'bruma',name:'Jardín de la Bruma',short:'Magia nocturna',atmosphere:['#d5b6de','#76679f','#2d3b63'],levels:[16,17,18,19,20]},
+  {id:'bosque',name:'Santuario de las Fibras',short:'Raíces y diseños',atmosphere:['#bfe2a0','#678b6a','#244c42'],levels:[21,22,23,24,25]},
+  {id:'corona',name:'Corona del Semillero',short:'La senda legendaria',atmosphere:['#ecd9a7','#8b86b4','#39345d'],levels:[26,27,28,29,30]}
+]);
+const NODE_LAYOUT = Object.freeze([
+  {x:105,y:356},{x:295,y:288},{x:478,y:338},{x:667,y:263},{x:848,y:320}
+]);
+const nodesForChapter = chapter => CHAPTERS[chapter].levels.map((level,i)=>({level,...NODE_LAYOUT[i],epic:level%5===0}));
+
+// src/data/g4-services.js
+/** EcoTienda G4: names/locations from store project; not a price or availability source.
+ * MATCHES are editorial discovery hints only, never technical hair eligibility.
+ * Update actual service prices/photos/descriptions from commercial authority before publishing.
+ */
+const SERVICE_FAMILIES = Object.freeze([
+  {id:'minibraids',name:'MiniBraids',symbol:'🌾',theme:'Trenzas',detail:'Explora ejemplos de esta familia de trenzados con asesoría personalizada.',interests:['naturalidad','practicidad','largo']},
+  {id:'ecobraids',name:'EcoBraids',symbol:'🌿',theme:'EcoTienda',detail:'Conoce opciones de trenzado, acabados y colores disponibles con el equipo.',interests:['largo','volumen','color']},
+  {id:'ecodreads',name:'EcoDreads',symbol:'🍃',theme:'Dreads',detail:'Descubre esta línea y pregunta por el proceso, el cuidado y la personalización.',interests:['identidad','practicidad','explorar']},
+  {id:'gypsy',name:'Gypsy',symbol:'🌺',theme:'Expresión',detail:'Explora esta familia de peinados y consulta sus opciones reales de diseño.',interests:['identidad','volumen','color']},
+  {id:'ecomix',name:'EcoMix',symbol:'🎨',theme:'Combinaciones',detail:'Descubre esta familia y pregunta al equipo por mezclas y alternativas.',interests:['color','identidad','explorar']}
+]);
+const SERVICE_IDS = Object.freeze(SERVICE_FAMILIES.map(s=>s.id));
+const STORE_SITES = Object.freeze(['Ñuñoa','Rancagua','Viña del Mar']);
+const STAMP_COUNT = SERVICE_IDS.length;
+const SERVICE_IG_URL = 'https://www.instagram.com/ecotienda_trenzasydreads/';
+function serviceById(id){ return SERVICE_FAMILIES.find(x=>x.id===id)||null; }
+function suggestedServices(motive){
+  // Human consultation must come first for concerns about hair condition.
+  if(motive==='cabello')return [];
+  if(!motive||motive==='explorar')return SERVICE_FAMILIES;
+  return [...SERVICE_FAMILIES].sort((a,b)=>Number(b.interests.includes(motive))-Number(a.interests.includes(motive)));
+}
+
+// src/g4/StyleAtlas.mjs
+/** G4 local exploration notebook only – not CRM, leads, purchases or game economy.
+ * Separating storage prevents the discovery flow from rewriting the G3.1 saved game.
+ */
+
+const G4_ATLAS_STORAGE_KEY='ecotrenzas-g4-style-atlas-v1';
+class StyleAtlas {
+  constructor({storage=null}={}){
+    this.storage=storage;
+    let raw=null;
+    try{raw=JSON.parse(storage?.getItem(G4_ATLAS_STORAGE_KEY)||'null');}catch{}
+    this.state={version:1,
+      exploredServices:Array.isArray(raw?.exploredServices)?[...new Set(raw.exploredServices.filter(x=>SERVICE_IDS.includes(x)))]:[],
+      selectedService:SERVICE_IDS.includes(raw?.selectedService)?raw.selectedService:'',
+      preferredSede:STORE_SITES.includes(raw?.preferredSede)?raw.preferredSede:''};
+  }
+  snapshot(){return JSON.parse(JSON.stringify(this.state));}
+  persist(){this.storage?.setItem(G4_ATLAS_STORAGE_KEY,JSON.stringify(this.state));}
+  exploreService(id){if(!SERVICE_IDS.includes(id))return false;
+    if(!this.state.exploredServices.includes(id))this.state.exploredServices.push(id);
+    this.state.selectedService=id;this.persist();return true;}
+  chooseSede(id){if(id!==''&&!STORE_SITES.includes(id))return false;
+    this.state.preferredSede=id;this.persist();return true;}
+}
+
+// src/g3/G3Painter.js
+/* EcoTrenzas Garden · G3 procedural 2.5D environment (not approved production sprites).
+   Independent visual layer; never reads/writes currency or state. Deterministic composition. */
+
+const SCENE_WIDTH=960, SCENE_HEIGHT=540;
+const TAU=Math.PI*2;
+const pal=[
+ {sky:['#92c5e2','#fae7ae'],ridge:'#9bb6a0',ridge2:'#588874',stone:'#b1a286',earth:'#674b36',foliage:'#376a48',water:'#7dccd2',accent:'#d9b665',blossom:'#e9a1be'},
+ {sky:['#88c7df','#d9f3d9'],ridge:'#85b7a8',ridge2:'#467c77',stone:'#aaab9b',earth:'#536a69',foliage:'#30736a',water:'#72d5dc',accent:'#76ead4',blossom:'#c9e4f8'},
+ {sky:['#f9cfae','#ffefcc'],ridge:'#d5aa9b',ridge2:'#8f7f7b',stone:'#c6a08d',earth:'#784e4a',foliage:'#577852',water:'#bde3dd',accent:'#f4d19a',blossom:'#f1a0ba'},
+ {sky:['#685986','#cfb8de'],ridge:'#8b83a7',ridge2:'#474868',stone:'#9c8da3',earth:'#4b3d58',foliage:'#365b60',water:'#8bafe1',accent:'#d4baff',blossom:'#cba8fc'},
+ {sky:['#a4cba6','#f2e5ad'],ridge:'#91ac88',ridge2:'#547b67',stone:'#a6aa80',earth:'#655643',foliage:'#2e654a',water:'#8bcfb7',accent:'#e2d28d',blossom:'#c6d79b'},
+ {sky:['#a7a6ce','#fff0ca'],ridge:'#b6a1bd',ridge2:'#666080',stone:'#b4a5ac',earth:'#544961',foliage:'#38645e',water:'#bdc1f2',accent:'#f7cd72',blossom:'#ee9fda'}
+];
+function rnd(seed){let n=seed>>>0;return ()=>((n=(Math.imul(n,1664525)+1013904223)>>>0)/4294967296);}
+function ellipse(c,x,y,rx,ry,fill,rotation=0){c.fillStyle=fill;c.beginPath();c.ellipse(x,y,rx,ry,rotation,0,TAU);c.fill();}
+function stroke(c,pts,width,color){c.lineWidth=width;c.strokeStyle=color;c.lineCap='round';c.lineJoin='round';c.beginPath();pts.forEach((p,i)=>i?c.lineTo(p.x,p.y):c.moveTo(p.x,p.y));c.stroke();}
+function blendGradient(c,y1,y2,top,bottom){const gr=c.createLinearGradient(0,y1,0,y2);gr.addColorStop(0,top);gr.addColorStop(1,bottom);return gr;}
+function mountain(c,base,amp,phase,fill){c.fillStyle=fill;c.beginPath();c.moveTo(0,540);c.lineTo(0,base);for(let x=0;x<=960;x+=12)c.lineTo(x,base+Math.sin(x*.012+phase)*amp+Math.sin(x*.029+phase*.7)*amp*.36);c.lineTo(960,540);c.closePath();c.fill();}
+function tree(c,x,y,s,p,seed,foreground=false){let r=rnd(seed);c.save();c.translate(x,y);c.scale(s,s);
+  ellipse(c,4,3,34,9,'#152f2749');
+  const trunk=c.createLinearGradient(-14,0,12,0);trunk.addColorStop(0,'#392e24');trunk.addColorStop(.5,'#97764b');trunk.addColorStop(1,'#38271f');
+  c.lineWidth=12;c.strokeStyle=trunk;c.beginPath();c.moveTo(0,0);c.bezierCurveTo(-6,-45,7,-75,-4,-107);c.stroke();
+  c.lineWidth=6;c.beginPath();c.moveTo(-1,-70);c.lineTo(-35,-105);c.moveTo(2,-90);c.lineTo(31,-119);c.stroke();
+  for(let i=0;i<13;i++){let ax=(r()-.5)*104,ay=-110+(r()-.5)*77;const leaf=c.createRadialGradient(ax-7,ay-5,2,ax,ay,30);leaf.addColorStop(0,i%4===0?'#c2d591':i%3===0?'#7faa64':'#72a470');leaf.addColorStop(1,p.foliage);ellipse(c,ax,ay,24+r()*15,19+r()*9,leaf,r()*.6-.3);}
+  if(foreground){for(let i=0;i<4;i++){const ax=(r()-.5)*105,ay=-96+(r()-.5)*65;ellipse(c,ax,ay,4,3,p.blossom);}}
+  c.restore();
+}
+function flower(c,x,y,r,p){c.save();c.translate(x,y);c.lineWidth=1.5;c.strokeStyle='#3a6740';c.beginPath();c.moveTo(0,4);c.lineTo(-1,-8);c.stroke();
+ for(let i=0;i<5;i++){const a=i*TAU/5;ellipse(c,Math.cos(a)*r*.55,Math.sin(a)*r*.55-9,r*.55,r*.38,p.blossom,a);}ellipse(c,0,-9,r*.34,r*.34,'#ffe6a4');c.restore();}
+function stone(c,x,y,s,p){c.save();c.translate(x,y);c.scale(s,s);
+  ellipse(c,5,4,21,8,'#21392b4d');c.fillStyle='#6b6554';c.beginPath();c.moveTo(-22,0);c.lineTo(-19,-9);c.lineTo(-9,-16);c.lineTo(10,-18);c.lineTo(23,-6);c.lineTo(24,0);c.closePath();c.fill();
+  c.fillStyle=p.stone;c.beginPath();c.moveTo(-22,-7);c.lineTo(-11,-18);c.lineTo(11,-20);c.lineTo(23,-7);c.lineTo(10,-9);c.closePath();c.fill();c.restore();}
+function gate(c,x,y,s,p){c.save();c.translate(x,y);c.scale(s,s);c.strokeStyle='#8b623c';c.lineWidth=7;c.beginPath();c.moveTo(-27,10);c.quadraticCurveTo(-34,-45,0,-51);c.quadraticCurveTo(34,-45,27,10);c.moveTo(-22,3);c.lineTo(22,3);c.stroke();
+ c.strokeStyle='#e9c176';c.lineWidth=2;c.beginPath();c.moveTo(-26,7);c.quadraticCurveTo(-32,-43,0,-47);c.quadraticCurveTo(30,-43,26,7);c.stroke();
+ ellipse(c,0,-45,7,12,p.accent);c.restore();}
+function waterfall(c,p){c.save();
+ c.fillStyle=p.earth;c.beginPath();c.moveTo(652,315);c.lineTo(790,292);c.lineTo(871,339);c.lineTo(920,483);c.lineTo(795,510);c.lineTo(719,392);c.closePath();c.fill();
+ c.fillStyle='#314834';c.beginPath();c.moveTo(646,305);c.lineTo(778,285);c.lineTo(870,326);c.lineTo(825,349);c.lineTo(730,343);c.closePath();c.fill();
+ let w=c.createLinearGradient(726,302,852,500);w.addColorStop(0,'#dcfff4');w.addColorStop(.27,p.water);w.addColorStop(.8,'#5493aa');w.addColorStop(1,'#dbedfb');
+ c.fillStyle=w;c.beginPath();c.moveTo(727,332);c.bezierCurveTo(743,370,747,427,774,510);c.lineTo(852,502);c.bezierCurveTo(829,427,804,355,801,318);c.closePath();c.fill();
+ for(let j=0;j<12;j++){const x=742+j*5;stroke(c,[{x,y:336},{x:x+12,y:408},{x:x+26,y:500}],1.2+(j%3),'#e8ffff92');}
+ for(let j=0;j<14;j++)ellipse(c,715+(j*29)%153,501+Math.sin(j*2)*4,12+j%3*3,2,'#edffff75');
+ c.restore();}
+// Weave the path using a centerline, three interlocking sinusoidal strips, and shadows.
+function pathSamples(chapter){const nodes=nodesForChapter(chapter),out=[];for(let i=0;i<nodes.length-1;i++){const a=nodes[i],b=nodes[i+1],mid=(a.x+b.x)/2;for(let j=0;j<45;j++){const t=j/45,u=1-t;const x=u*u*u*a.x+3*u*u*t*mid+3*u*t*t*mid+t*t*t*b.x;
+ const y=u*u*u*a.y+3*u*u*t*(a.y+20)+3*u*t*t*(b.y-20)+t*t*t*b.y;out.push({x,y});}}out.push(nodes[nodes.length-1]);return out;}
+function drawBraid(c,chapter,p){const pts=pathSamples(chapter);const curves=[{w:66,clr:'#1a2c225e',dy:20},{w:49,clr:'#4b2c1c',dy:13},{w:37,clr:'#9d6635',dy:8},{w:31,clr:'#d29b52',dy:3}];
+ curves.forEach(q=>stroke(c,pts.map(k=>({x:k.x,y:k.y+q.dy})),q.w,q.clr));
+ for(let z=0;z<3;z++){const strands=[];for(let i=0;i<pts.length;i++){const prev=pts[Math.max(0,i-1)],next=pts[Math.min(pts.length-1,i+1)],dx=next.x-prev.x,dy=next.y-prev.y,length=Math.hypot(dx,dy)||1,nx=-dy/length,ny=dx/length;
+ const shift=Math.sin(i*.48+z*TAU/3)*12;strands.push({x:pts[i].x+nx*shift,y:pts[i].y+ny*shift+3});}
+ stroke(c,strands,9,z===0?'#ffe0a5':z===1?'#614027':'#ba7b3d');stroke(c,strands.map(v=>({x:v.x,y:v.y-2})),2,z===0?'#fff1cb':'#e6b57b');}
+ for(let i=6;i<pts.length-7;i+=8){const a=pts[i];ellipse(c,a.x,a.y+5,2.1,2.1,'#ffeaa4aa');}
+}
+function balcony(c,x,y){c.save();c.translate(x,y);const wood='#6f5236';for(let i=0;i<4;i++){const xx=i*35;c.strokeStyle=wood;c.lineWidth=7;c.beginPath();c.moveTo(xx,-10);c.lineTo(xx,15);c.stroke();ellipse(c,xx,-11,5,5,'#c9a470');}c.strokeStyle='#a98659';c.lineWidth=4;c.beginPath();c.moveTo(0,-7);c.lineTo(105,-7);c.stroke();c.restore();}
+function paintG3Background(c,chapter){const p=pal[chapter];let r=rnd(2119+chapter*117);c.save();c.clearRect(0,0,960,540);
+ c.fillStyle=blendGradient(c,0,455,p.sky[0],p.sky[1]);c.fillRect(0,0,960,540);
+ // sun / moon corona and light rays
+ const light=c.createRadialGradient(710,100,4,710,100,255);light.addColorStop(0,'#fff9c9a4');light.addColorStop(.34,'#fff9c94a');light.addColorStop(1,'#fff9c900');c.fillStyle=light;c.fillRect(440,0,520,370);ellipse(c,708,110,36,36,chapter===3?'#e4d2ff':'#fff1c2');
+ c.fillStyle='#fff7dc26';for(let i=0;i<7;i++){let x=i*165-110;c.beginPath();c.moveTo(705,110);c.lineTo(x,540);c.lineTo(x+55,540);c.closePath();c.fill();}
+ // distant clouds
+ for(let j=0;j<15;j++){const x=(j*163+chapter*45)%1040-40,y=56+(j*29)%145;ellipse(c,x,y,47+(j%4)*10,14+(j%3)*5,'#fff7df5b');}
+ mountain(c,209,31,1.4,p.ridge);mountain(c,275,35,0.2,p.ridge2);
+ // soft mist bridge and distant architecture
+ c.fillStyle='#f3f2de4a';c.fillRect(0,285,960,65);
+ gate(c,175,239,1.3,p);gate(c,510,222,.85,p);
+ // far treetops stay behind the clear central path
+ for(let i=0;i<13;i++){let x=i*87-60,y=293+(i*11)%41;tree(c,x,y,.32+(i%3)*.06,p,100+i);}
+ // island below the foreground path
+ c.fillStyle=p.earth;c.beginPath();c.moveTo(0,381);c.bezierCurveTo(185,336,405,384,559,348);c.bezierCurveTo(734,336,824,362,960,357);c.lineTo(960,540);c.lineTo(0,540);c.closePath();c.fill();
+ c.fillStyle='#3e6c46';c.beginPath();c.moveTo(0,356);c.bezierCurveTo(180,324,401,348,559,326);c.bezierCurveTo(746,311,814,353,960,332);c.lineTo(960,395);c.bezierCurveTo(672,403,490,392,253,406);c.lineTo(0,411);c.closePath();c.fill();
+ for(let i=0;i<18;i++){const x=i*58+14,y=390+(i%4)*25;stone(c,x,y,.35+r()*.4,p);}
+ // A waterfall cuts across the high island underneath the braided bridge.
+ waterfall(c,p);
+ // foreground trees + shrubs BEFORE path (path readable)
+ for(let i=0;i<13;i++){let x=i*92-45,y=457+(i%3)*34;ellipse(c,x,y,51,23,'#1d533e');for(let j=0;j<4;j++)ellipse(c,x+(j-1.5)*19,y-(j%2)*16,22,19,j%3===0?'#83a969':'#3e7551');}
+ for(let i=0;i<70;i++){let x=(i*113+chapter*61)%975,y=365+(i*47)%174;if(x>710&&x<850&&y>390)continue;ellipse(c,x,y,3+(i%3),7+(i%4),i%3?'#83b56a':'#2a644a',Math.sin(i));if(i%4===0)flower(c,x,y-2,4+(i%3),p);}
+ balcony(c,44,438);balcony(c,539,445);
+ drawBraid(c,chapter,p);
+ // pathway edge greenery and sparks
+ for(let i=0;i<23;i++){const pt=pathSamples(chapter)[i*7+2];if(!pt)continue;flower(c,pt.x+19+(i%3)*3,pt.y+31,3+(i%3),p);}
+ // Foreground foliage framing
+ tree(c,-25,520,.83,p,chapter+500,true);tree(c,984,566,.74,p,chapter+600,true);
+ for(let i=0;i<18;i++){let x=r()*960,y=515+r()*48;ellipse(c,x,y,20+r()*24,10+r()*8,i%3?'#21462f':'#587d4b');}
+ c.restore();}
+function paintG3Node(c,n,level,t=0,animate=true){const p=pal[Math.floor((n.level-1)/5)];const won=n.level<=level,next=n.level===level+1,epic=n.epic;
+ c.save();c.translate(n.x,n.y+(!won&&next&&animate?Math.sin(t*2.5)*2:0));let rx=epic?47:40;
+ ellipse(c,4,24,rx+9,16,'#071e196b');
+ if(next){const rg=c.createRadialGradient(0,0,6,0,0,65);rg.addColorStop(0,'#ffe6a260');rg.addColorStop(.7,'#ffe6a22b');rg.addColorStop(1,'#ffe6a200');c.fillStyle=rg;c.fillRect(-70,-72,140,145);}
+ // stone cliff / sidewalls for raised 2.5D pedestal
+ ellipse(c,0,7,rx,28,won?'#60714e':'#5c5b55');c.fillStyle=won?'#73845f':'#706b5e';c.fillRect(-rx+1,3,rx*2-2,15);ellipse(c,0,17,rx,24,'#61513b');ellipse(c,0,2,rx,27,p.stone);
+ for(let i=0;i<8;i++){const a=i*TAU/8;ellipse(c,Math.cos(a)*(rx-2),Math.sin(a)*21,7,5,won?'#5a925a':'#5d8766',a);}
+ ellipse(c,0,-6,epic?31:25,epic?22:18,won?'#39795d':next?'#c6954e':'#52695d');
+ c.lineWidth=epic?5:3;c.strokeStyle=epic?'#fbd880':next?'#fff2ac':'#d8be8c';c.beginPath();c.ellipse(0,-6,epic?31:25,epic?22:18,0,0,TAU);c.stroke();
+ c.textAlign='center';c.textBaseline='middle';c.font=`bold ${epic?26:23}px Georgia,serif`;c.lineWidth=2.5;c.strokeStyle='#18362d';c.strokeText(String(n.level),0,-6);c.fillStyle='#fff4d6';c.fillText(String(n.level),0,-6);
+ if(epic){for(let k=0;k<7;k++){const a=k*TAU/7;ellipse(c,Math.cos(a)*34,Math.sin(a)*22-6,3.3,6.5,k%2?'#e1a4f2':'#f8d681',a);}}
+ c.fillStyle='#1c3d32e0';c.beginPath();c.roundRect(-47,31,94,22,7);c.fill();c.font='bold 11px system-ui,sans-serif';c.fillStyle='#fff3cf';c.fillText(won?'✓ Superado':next?'✦ Próximo':'🔒 Bloqueado',0,42);
+ c.restore();}
+function paintG3Particles(c,chapter,t,animate=true){const r=rnd(860+chapter*31);for(let i=0;i<24;i++){const x=r()*960,y=r()*450+25,amp=animate?Math.sin(t*1.3+i)*9:0;const a=.18+.2*(animate?(1+Math.sin(t*2+i))/2:1);ellipse(c,x+amp,y+(animate?Math.sin(t+i)*6:0),2+i%3,2+i%3,`rgba(255,245,194,${a})`);}}
+function imageBackdrop(chapter){const c=document.createElement('canvas');c.width=SCENE_WIDTH;c.height=SCENE_HEIGHT;paintG3Background(c.getContext('2d'),chapter);return c;}
+
+const W=SCENE_WIDTH,H=SCENE_HEIGHT;
+// src/g3/TrackG3CanvasScene.js
+
+
+/* Canvas 2.5D preview: mobile camera keeps nodes readable. No gameplay state mutations. */
+class TrackG3CanvasScene {
+ constructor({game,onSelect}){
+  this.game=game;this.onSelect=onSelect;this.chapter=0;this.host=null;this.canvas=null;this.ctx=null;
+  this.base=null;this.raf=0;this.ro=null;this.last=0;
+  this.motion=!(window.matchMedia?.('(prefers-reduced-motion: reduce)').matches);
+  this.focusX=295;this.view=null;this.drag=null;this.suppressClick=false;
+  this.tap=this.tap.bind(this);this.pointerDown=this.pointerDown.bind(this);
+  this.pointerMove=this.pointerMove.bind(this);this.pointerUp=this.pointerUp.bind(this);
+ }
+ async mount(host){
+  this.host=host;this.canvas=document.createElement('canvas');
+  this.canvas.style.cssText='display:block;width:100%;height:100%;touch-action:pan-y;cursor:grab';
+  this.canvas.setAttribute('aria-label','Senda 2.5D, desliza horizontalmente para explorar; usa los botones de nivel para navegación accesible');
+  host.appendChild(this.canvas);this.ctx=this.canvas.getContext('2d',{alpha:false});
+  this.base=imageBackdrop(this.chapter);
+  this.ro=new ResizeObserver(()=>this.resize());this.ro.observe(host);
+  this.canvas.addEventListener('click',this.tap);
+  this.canvas.addEventListener('pointerdown',this.pointerDown);
+  this.canvas.addEventListener('pointermove',this.pointerMove);
+  this.canvas.addEventListener('pointerup',this.pointerUp);
+  this.canvas.addEventListener('pointercancel',this.pointerUp);
+  this.resize();if(this.motion)this.raf=requestAnimationFrame(t=>this.loop(t));
+ }
+ setChapter(index){
+  this.chapter=Math.max(0,Math.min(5,Number(index)||0));
+  const nodes=nodesForChapter(this.chapter),lv=this.game.level();
+  this.focusX=(nodes.find(n=>n.level===lv+1)||nodes.find(n=>n.level===lv)||nodes[0]).x;
+  if(this.ctx){this.base=imageBackdrop(this.chapter);this.draw(performance.now()/1000);}
+ }
+ focusLevel(level){const n=nodesForChapter(this.chapter).find(n=>n.level===level);if(!n)return;
+  this.focusX=n.x;this.draw(performance.now()/1000);
+ }
+ resize(){if(!this.canvas)return;
+  const rect=this.host.getBoundingClientRect(),d=Math.min(window.devicePixelRatio||1,2);
+  this.canvas.width=Math.max(1,Math.round((rect.width||960)*d));
+  this.canvas.height=Math.max(1,Math.round((rect.height||540)*d));
+  this.draw(performance.now()/1000);
+ }
+ camera(){
+  const r=this.canvas.getBoundingClientRect(),w=Math.max(1,r.width),h=Math.max(1,r.height);
+  const mobile=w<650;
+  const scale=mobile? Math.min(.9,Math.max(.68,w/460)) : Math.min(w/W,h/H);
+  const clamp=(value,min,max)=>Math.max(min,Math.min(max,value));
+  const x=mobile?clamp(w/2-this.focusX*scale,Math.min(0,w-W*scale),Math.max(0,w-W*scale)):(w-W*scale)/2;
+  const y=mobile?clamp(h*.55-305*scale,Math.min(0,h-H*scale),Math.max(0,h-H*scale)):(h-H*scale)/2;
+  return {x,y,scale,w,h,mobile};
+ }
+ pointerDown(e){if(!this.canvas||e.button!==0)return;
+  this.drag={x:e.clientX,focus:this.focusX,moved:false};
+  this.canvas.setPointerCapture?.(e.pointerId);
+ }
+ pointerMove(e){if(!this.drag||!this.camera().mobile)return;
+  const delta=e.clientX-this.drag.x;
+  if(Math.abs(delta)>8)this.drag.moved=true;
+  if(this.drag.moved){this.focusX=Math.max(0,Math.min(W,this.drag.focus-delta/this.camera().scale));
+   this.draw(performance.now()/1000);}
+ }
+ pointerUp(e){if(this.drag?.moved)this.suppressClick=true;
+  this.drag=null;
+  if(this.canvas?.hasPointerCapture?.(e.pointerId))this.canvas.releasePointerCapture(e.pointerId);
+ }
+ tap(e){if(this.suppressClick){this.suppressClick=false;return;}
+  const r=this.canvas.getBoundingClientRect(),view=this.camera();
+  const wx=(e.clientX-r.left-view.x)/view.scale,wy=(e.clientY-r.top-view.y)/view.scale;
+  const n=nodesForChapter(this.chapter).find(v=>Math.hypot(wx-v.x,wy-v.y)<56);
+  if(n)this.onSelect(n.level);
+ }
+ loop(time){if(!this.ctx)return;if(time-this.last>65){this.draw(time/1000);this.last=time;}
+  this.raf=requestAnimationFrame(t=>this.loop(t));
+ }
+ draw(seconds=0){if(!this.ctx)return;
+  const c=this.ctx,view=this.camera(),d=this.canvas.width/view.w;
+  c.setTransform(d,0,0,d,0,0);c.fillStyle='#172b22';c.fillRect(0,0,view.w,view.h);
+  c.translate(view.x,view.y);c.scale(view.scale,view.scale);c.drawImage(this.base,0,0);
+  const lv=this.game.level();for(const n of nodesForChapter(this.chapter))paintG3Node(c,n,lv,seconds,this.motion);
+  paintG3Particles(c,this.chapter,seconds,this.motion);
+  this.view=view;
+ }
+ destroy(){if(this.raf)cancelAnimationFrame(this.raf);this.raf=0;
+  this.ro?.disconnect();this.ro=null;
+  if(this.canvas){for(const [name,handler] of [['click',this.tap],['pointerdown',this.pointerDown],['pointermove',this.pointerMove],['pointerup',this.pointerUp],['pointercancel',this.pointerUp]])this.canvas.removeEventListener(name,handler);this.canvas.remove();}
+  this.canvas=null;this.ctx=null;this.base=null;
+ }
+}
+
+// src/g4/GardenG4UI.js
+
+
+
+
+// Single shared GardenGameplay engine; the visual scene never awards rewards directly.
+function mountGame(TrackSceneClass, FallbackSceneClass = null) {
+const game = new GardenGameplay({ storage: localStorage });
+const atlas = new StyleAtlas({storage:localStorage});
+let scene=null, chapter=0, sceneReady=false, sceneEpoch=0;
+let rendererMode="loading", rendererError=null, rendererDetail=null;
+const q = id => document.getElementById(id);
+let tab='track';
+const names=Object.fromEntries(Object.entries(SEEDS).map(([k,v])=>[k,v.name]));
+const tones=['#7bbbe5','#b99bdb','#f18cb3','#79c9b7','#55d0c1','#c4a4da'];
+const ico=['❄️','🌙','🌹','🌈','💧','✨'];
+const clamp=(v,max)=>Math.max(0,Math.min(max,v));
+const motivation = id => MOTIVES.find(m=>m.id===id)?.label || 'Explorar diseños';
+function toast(txt){const e=q('toast');e.textContent=txt;e.classList.add('show');clearTimeout(window.__toast);window.__toast=setTimeout(()=>e.classList.remove('show'),2600)}
+function header() {
+  const s=game.snapshot(),n=game.level(),next=xpFor(n+1),base=xpFor(n);
+  q('wallet').innerHTML=`<span>🪙 ${s.coins.toLocaleString('es-CL')}</span><span>💎 ${s.crystals}</span><span>🎴 ${s.unlocked.length}/6</span>`;
+  q('level').textContent=`Nivel ${n}/${MAX_LEVEL}`;
+  q('xpdetail').textContent=n===MAX_LEVEL?'Senda completada':`${s.xp} XP · Faltan ${next-s.xp} XP`;
+  q('xpbar').style.width=`${n===MAX_LEVEL?100:clamp(Math.round(100*(s.xp-base)/(next-base)),100)}%`;
+  document.querySelectorAll('[data-tab]').forEach(b=>{if(b.dataset.tab===tab)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});
+}
+function garden() {
+  const s=game.snapshot();
+  const seeds=Object.entries(SEEDS).map(([k,v])=>`<button class="${s.chosen===k?'active':''}" data-seed="${k}" aria-pressed="${s.chosen===k}">${v.icon}<br>${v.name}<br>🪙 4</button>`).join('');
+  const plots=s.plots.map((p,i)=>{
+    if(!game.plotUnlocked(i))return `<div class="plot locked"><b class="marker">PARCELA ${i+1}</b><span>🔒</span><strong>Rincón secreto</strong><small>Se abre con las 6 cartas</small></div>`;
+    if(!p)return `<div class="plot"><b class="marker">PARCELA ${i+1}</b><span>🌰</span><strong>Tierra disponible</strong><button class="action" data-plot="plant" data-i="${i}">Plantar ${SEEDS[s.chosen].icon}</button></div>`;
+    const left=game.secondsLeft(i),ready=left===0;
+    return `<div class="plot"><b class="marker">PARCELA ${i+1}</b><span>${ready?SEEDS[p.seed].icon:'🌱'}</span><strong>${names[p.seed]}</strong><small>${ready?'¡Lista para cosechar!':left+' s restantes'}</small><button class="action" data-plot="${ready?'harvest':'water'}" data-i="${i}" ${!ready&&p.watered?'disabled':''}>${ready?'Cosechar +2':'💧 '+(p.watered?'Regada':'Regar · −6 s')}</button></div>`;
+  }).join('');
+  const m=MISSION_TARGETS.map(t=>{
+    const id=t===4?'four':'eight';return `<div class="panel" style="margin:8px 0"><strong>${t===4?'🌱 Primera floración':'🌿 Jardín en movimiento'}</strong><p class="note" style="margin:7px 0">${Math.min(t,s.daily.harvest)}/${t} cosechas · ${s.daily.claimed.includes(id)?'✓ Completada':'+60 XP y +25 monedas'}</p></div>`;
+  }).join('');
+  return `<section class="stage"><h2>🌱 Jardín de pigmentos</h2><p class="note">Planta semillas por 4 EcoMonedas, riega para acelerar y cosecha pigmentos. Ganas XP por las primeras 10 cosechas del día, sin penalizaciones ni rachas.</p><div class="grid2"><div class="panel" style="background:linear-gradient(#3e7348,#1d4b35)"><div class="plots">${plots}</div></div><aside><div class="panel"><strong>Elige tu semilla</strong><div class="seeds">${seeds}</div><strong>Tus pigmentos</strong><div class="bag">${Object.entries(SEEDS).map(([k,v])=>`<span>${v.icon}<br>${s.pigments[k]}</span>`).join('')}</div></div><div style="margin-top:12px"><h3>Misiones del día</h3>${m}</div></aside></div></section>`;
+}
+function album() {
+  const s=game.snapshot();
+  const cards=CARDS.map((c,i)=>{
+    const have=s.unlocked.includes(c.id),can=game.canUnlock(c.id);
+    const ingredients=Object.entries(c.recipe).map(([k,n])=>`${SEEDS[k].icon} ${names[k]} ×${n}`).join(' · ');
+    return `<article class="card ${have?'owned':''}"><div class="cardpic" style="--tone:${tones[i]}">${ico[i]}</div><h3>${c.name}</h3><small>${c.rarity} · Referencia fantástica</small><p>${c.desc}</p><div class="ingredients">${ingredients}</div><button class="action ${have?'alt':''}" data-unlock="${c.id}" ${!can?'disabled':''}>${have?'✓ Coleccionada':can?'Descubrir carta':'Reúne pigmentos'}</button>${have?`<button class="action alt" style="margin-top:8px" data-equip="${c.id}">🪞 ${s.equipped===c.id?'Equipada':'Vestidor'}</button>`:''}</article>`;
+  }).join('');
+  return `<section class="stage"><h2>🎴 Álbum Wooldreads</h2><p class="note">Las seis cartas existentes se mantienen con sus recetas originales. Completa la colección para abrir la cuarta parcela. Las imágenes y nombres son inspiración de fantasía, no modelos exactos ni disponibilidad comercial.</p><div class="cardgrid">${cards}</div></section>`;
+}
+function track(){
+  const s=game.snapshot(),lvl=game.level(),ch=CHAPTERS[chapter];
+  return `<section class="stage"><h2>🏅 Senda Premium G3 · 2.5D</h2>
+    <p class="note">30 niveles en seis zonas del Semillero Mágico. La senda representa el progreso por XP del jardín y del álbum: pulsar nodos no concede recompensas.</p>
+    <div class="chapter-toolbar"><button type="button" id="prev-chapter" ${chapter===0?'disabled':''} aria-label="Zona anterior">←</button>
+      <div><small>ZONA ${chapter+1} DE 6 · ${ch.short}</small><strong id="chapter-name">${ch.name}</strong><span>${ch.levels[0]}–${ch.levels[4]} · ${s.xp}/${7192} XP</span></div>
+      <button type="button" id="next-chapter" ${chapter===5?'disabled':''} aria-label="Zona siguiente">→</button></div>
+    <div id="g2-map" class="map-viewport" aria-label="Senda interactiva zona ${chapter+1}"></div>
+    <p id="g4-renderer-status" class="g4-renderer-status" role="status">Preparando el mapa…</p>
+    <p id="node-summary" class="node-summary">Selecciona un nodo de la senda. La experiencia se consigue cultivando y descubriendo cartas.</p>
+    <div class="g3-node-controls" role="group" aria-label="Información de los cinco niveles de la zona">${ch.levels.map(l=>`<button type="button" data-node="${l}" aria-label="Ver nivel ${l}">${l===lvl?'✓ ':l===lvl+1?'✦ ':''}${l}</button>`).join('')}</div>
+    <p class="g3-prototype-disclaimer">🎨 Paisaje y trenza generados por código: arte provisional G3. En PixiJS se utiliza el PNG aprobado para la base de los nodos. Ninguna ilustración representa productos reales.</p>
+    <div class="chapter-jump" role="group" aria-label="Seleccionar zona">${CHAPTERS.map((v,i)=>`<button type="button" data-chapter="${i}" class="${chapter===i?'active':''}" aria-pressed="${chapter===i}">${i+1} · ${v.short}</button>`).join('')}</div>
+    <p class="note" style="margin-top:14px">Progreso actual: nivel ${lvl}/30. Hitos especiales en niveles 5, 8, 10, 13, 15, 18, 20, 23, 25, 28 y 30. Recompensas solo virtuales.</p>
+  </section>`;
+}
+function nodeInfo(n) {
+  scene?.focusLevel?.(n);
+  const lvl=game.level(),special=SPECIAL[n];
+  const status=n<=lvl?'✓ Superado':n===lvl+1?'✦ Siguiente nivel':'🔒 Bloqueado';
+  q('node-summary').textContent=`${status}: Nivel ${n} · ${xpFor(n).toLocaleString('es-CL')} XP necesarios · ${n===1?'Inicio':coinsFor(n)+' EcoMonedas'}${special?' · '+special:''}.`;
+}
+function selectChapter(n){chapter=clamp(Number(n),5);scene?.setChapter(chapter); q('chapter-name').textContent=CHAPTERS[chapter].name;
+  // Rebuild toolbar/chapters to reflect current selection and disabled arrows without recreating stage.
+  render();
+}
+function mountTrack() {
+  const host=q('g2-map');if(!host)return;
+  const epoch=++sceneEpoch;
+  rendererMode='loading';rendererError=null;rendererDetail=null;
+  const loadScene=async(SceneClass,mode)=>{
+    const candidate=new SceneClass({game,onSelect:nodeInfo});
+    scene=candidate;sceneReady=false;candidate.setChapter(chapter);
+    try {
+      await candidate.mount(host);
+      if(epoch!==sceneEpoch||scene!==candidate){candidate.destroy();return;}
+      if(mode==='pixi'){
+        const d=candidate.runtimeDiagnostics?.();
+        if(!d||d.backend!=='webgl'||!d.approvedNodeVerified||d.nodeCount!==5||d.nodeSprites!==5||!d.actualCanvas) {
+          throw Error('G4_PIXI_RUNTIME_ATTESTATION_FAILED '+JSON.stringify(d));
+        }
+        rendererDetail=d;
+      } else rendererDetail={engine:'canvas',backend:'2d',approvedNodeVerified:false};
+      sceneReady=true;rendererMode=mode;
+      const status=q('g4-renderer-status');
+      if(status)status.textContent=mode==='pixi'?'Motor PixiJS activo · arte 2.5D':mode==='canvas-fallback'?'Modo de compatibilidad Canvas 2.5D: PixiJS o su recurso aprobado no se pudieron cargar.':'Vista Canvas 2.5D · laboratorio';
+    }catch(error){
+      if(epoch!==sceneEpoch||scene!==candidate){candidate.destroy();return;}
+      console.warn('G4_RENDERER_LOAD_FAILED', mode, String(error));
+      try{candidate.destroy()}catch(cleanError){console.warn('G4_RENDERER_CLEANUP',String(cleanError))}
+      scene=null;host.replaceChildren();rendererError=String(error);rendererDetail=null;
+      if(mode==='pixi'&&FallbackSceneClass){
+        return loadScene(FallbackSceneClass,'canvas-fallback');
+      }
+      rendererMode='failed';sceneReady=false;
+      const status=q('g4-renderer-status');if(status)status.textContent='No se pudo iniciar el mapa. El progreso continúa guardado.';
+    }
+  };
+  void loadScene(TrackSceneClass, FallbackSceneClass?'pixi':'canvas-preview');
+}
+function style() {
+  const s=game.snapshot(),a=atlas.snapshot(),choices=game.discover();
+  const motiveButtons=MOTIVES.map(m=>`<button type="button" data-motive="${m.id}" class="${s.motive===m.id?'active':''}" aria-pressed="${s.motive===m.id}">${m.label}</button>`).join('');
+  const fantasyChoices=choices.map(c=>`<div class="choice"><h3>${c.name}</h3><p class="note">${c.desc}</p><button type="button" class="action" data-select="${c.id}">${s.selected===c.id?'✓ Elegida':'Elegir inspiración'}</button></div>`).join('');
+  const chosen=CARDS.find(c=>c.id===s.selected);
+  const advisory=s.motive==='cabello';
+  const ordered=suggestedServices(s.motive);
+  const selected=serviceById(a.selectedService);
+  const families=(advisory?SERVICE_FAMILIES:ordered).map(f=>{
+    const visited=a.exploredServices.includes(f.id),current=a.selectedService===f.id;
+    return `<div class="g4-family ${current?'g4-chosen':''}"><span class="g4-service-icon" aria-hidden="true">${f.symbol}</span><div><small>${f.theme}</small><h3>${f.name}</h3><p>${f.detail}</p><span class="g4-explore-stamp">${visited?'✓ Exploraste esta familia':'○ Sin explorar'}</span></div><button type="button" class="action" data-service="${f.id}" aria-pressed="${current}">${current?'✓ Me interesa':'Conocer familia'}</button></div>`;
+  }).join('');
+  const options=['<option value="">No tengo sede definida</option>',...STORE_SITES.map(name=>`<option value="${name}" ${a.preferredSede===name?'selected':''}>${name}</option>`)].join('');
+  return `<section class="stage"><p class="g4-eyebrow">G4 · Puente del juego a EcoTienda</p><h2>🪞 Descubre tu próximo estilo</h2>
+    <p class="note">Juega y colecciona cartas de fantasía; cuando quieras, explora los servicios reales de EcoTienda. No hace falta completar niveles ni entregar datos para consultar.</p>
+    <h3>1 · Tu Punto de Conexión</h3><p class="note">¿Qué te gustaría conseguir con tu cabello? Puedes cambiar de idea libremente.</p>
+    <div class="style-options">${motiveButtons}</div>
+    <h3 style="margin-top:20px">2 · Cartas mágicas: tres inspiraciones</h3><p class="note">Estos nombres y colores son de fantasía; no son trabajos reales ni aseguran un resultado.</p>
+    <div class="choice-row">${fantasyChoices}</div>
+    <h3 style="margin-top:22px">3 · Familias de peinados EcoTienda</h3>
+    <p class="note">${advisory?'Por dudas sobre cabello corto o sensibilizado, recomendamos conversar primero con una especialista. Ningún servicio está recomendado automáticamente para tu cabello.':'Estas familias se ordenan solo por afinidad temática con tu interés. La compatibilidad, duración, precio y disponibilidad se confirman con EcoTienda.'}</p>
+    <div class="g4-stamps"><strong>🌿 Atlas de estilos: ${a.exploredServices.filter(x=>SERVICE_IDS.includes(x)).length}/${STAMP_COUNT} familias exploradas</strong><small>Sellos de exploración gratuitos. No entregan XP, descuentos ni premios por comprar.</small></div>
+    <div class="g4-service-grid">${families}</div>
+    <div class="g4-handoff"><h3>4 · Tu consulta a EcoTienda</h3>
+      <p><strong>${selected?'Te interesa '+selected.name:'Aún no has seleccionado un servicio'}</strong>${chosen?' · Inspiración mágica: '+chosen.name:''}.</p>
+      <label for="g4-sede">Sede de preferencia (opcional)</label><select id="g4-sede" name="sede">${options}</select>
+      <p class="note">La tienda confirmará la mejor alternativa mediante atención humana. No se consulta stock ni agenda en tiempo real desde el juego.</p>
+      <div class="g4-handoff-actions"><button type="button" class="action" id="copy">📋 Copiar consulta</button><a class="action alt" target="_blank" rel="noopener noreferrer" href="${SERVICE_IG_URL}">💬 Abrir Instagram ↗</a></div>
+      <p class="muted">Abrir Instagram no envía el mensaje automáticamente. Puedes copiarlo y pegarlo cuando quieras, sin registro y sin obligación de comprar.</p>
+    </div></section>`;
+}
+function draft() {
+  const s=game.snapshot(),a=atlas.snapshot(),c=CARDS.find(c=>c.id===s.selected),selected=serviceById(a.selectedService);
+  return `Hola EcoTienda 🌿. En EcoTrenzas Garden exploré ${selected?.name||'sus peinados'}${c?' y me inspiró la carta de fantasía '+c.name:''}. Me interesa: ${motivation(s.motive)}.${a.preferredSede?' Preferiría la sede '+a.preferredSede+'.':''} ¿Me pueden orientar sobre un servicio real adecuado para mí, su precio vigente y la disponibilidad?`;
+}
+function render(){sceneEpoch++;if(scene){try{scene.destroy()}catch(error){console.warn('G4_RENDERER_CLEANUP',String(error))}scene=null;}sceneReady=false;header();q('main').innerHTML={garden,album,track,style}[tab]();if(tab==='track')mountTrack();}
+function act(cb,success='¡Listo!') {try{const res=cb();if(res===false||res===null)toast('No se puede completar todavía');else toast(success);}catch(e){toast('Acción detenida: '+e.message)}render();}
+document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{tab=b.dataset.tab;render()}));
+q('main').addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  if(b.dataset.node!==undefined){nodeInfo(Number(b.dataset.node));return;}
+  if(b.id==='prev-chapter'){selectChapter(chapter-1);return;}
+  if(b.id==='next-chapter'){selectChapter(chapter+1);return;}
+  if(b.dataset.chapter!==undefined){selectChapter(Number(b.dataset.chapter));return;}
+  if(b.dataset.seed)act(()=>game.chooseSeed(b.dataset.seed),'Semilla seleccionada');
+  if(b.dataset.plot){const index=Number(b.dataset.i);const job=b.dataset.plot;
+    if(job==='plant')act(()=>game.plant(index),'¡Semilla plantada!');
+    if(job==='water')act(()=>game.water(index),'La semilla crecerá más rápido');
+    if(job==='harvest')act(()=>game.harvest(index),'¡Cosecha realizada! XP y recompensas actualizadas');
+  }
+  if(b.dataset.unlock)act(()=>game.unlock(b.dataset.unlock),'¡Carta nueva para tu álbum!');
+  if(b.dataset.equip)act(()=>game.equip(b.dataset.equip),'Nuevo look equipado en el vestidor virtual');
+  if(b.dataset.motive)act(()=>game.chooseMotive(b.dataset.motive),'Exploración personalizada');
+  if(b.dataset.select)act(()=>game.select(b.dataset.select),'Inspiración elegida');
+  if(b.dataset.service)act(()=>atlas.exploreService(b.dataset.service),'Familia explorada en tu atlas');
+  if(b.id==='copy'){navigator.clipboard.writeText(draft()).then(()=>toast('Consulta copiada; puedes pegarla en Instagram')).catch(()=>window.prompt('Copia tu consulta:',draft()));}
+});
+q('main').addEventListener('change',e=>{if(e.target?.id==='g4-sede'){atlas.chooseSede(e.target.value);toast('Preferencia guardada en esta partida local');}});
+q('import').addEventListener('click',()=>{
+  if(!confirm('¿Importar una COPIA del progreso V0.3.1/V0.3 en este laboratorio? No se alterará la partida original y no se sobrescribirán partidas G1 existentes.'))return;
+  try{const from=game.copyFromLegacy();toast(from?'Copia importada de '+from:'No se encontró partida compatible');render();}catch(e){toast(e.message)}
+});
+q('reset').addEventListener('click',()=>{
+  if(!confirm('¿Reiniciar solamente el laboratorio G4.2? Las partidas V0.2, V0.3 y V0.3.1 se preservan.'))return;
+  localStorage.removeItem(STORAGE_KEY);location.reload();
+});
+setInterval(()=>{if(tab==='garden')render();},1000);
+render();
+
+window.__GARDEN_G3_TEST__ = {
+  ready:true,
+  snapshot:()=>({level:game.level(),xp:game.snapshot().xp,coins:game.state.coins,unlocked:game.state.unlocked.length,chapter,sceneReady,trackMounted:Boolean(scene),rendererMode,rendererError,rendererDetail}),
+  showTrack:()=>{tab='track';render();},
+  // Lab-only helper; never exposed on actual commercial integrations.
+  reset:()=>{localStorage.removeItem(STORAGE_KEY);location.reload();}
+};
+window.__GARDEN_G4_TEST__=window.__GARDEN_G3_TEST__;
+} // mountGame
+
+mountGame(TrackG3CanvasScene);
+
+</script></body></html>
