@@ -1,0 +1,54 @@
+name: G8 Atmospheric World Pixi Cert
+on:
+  push:
+    branches:
+      - lab/g8-world-premium
+    paths:
+      - 'lab/senda-premium/**'
+      - '.github/workflows/g8-atmosphere-cert.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  g8:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: lab/senda-premium
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install existing dependencies
+        run: npm install --no-audit --no-fund
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Preserve earlier economy and collection
+        run: npm run test:g5:core && npm run test:g6:core
+      - name: Build G5-G8
+        run: npm run build
+      - name: Validate true PixiJS WebGL and atmospheric depth
+        run: |
+          npm run preview -- --host 127.0.0.1 --port 4173 > /tmp/g8-preview.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
+          for i in {1..40}; do
+            if curl -fsS http://127.0.0.1:4173/g8.html >/dev/null; then break; fi
+            sleep 1
+          done
+          xvfb-run -a npm run test:g8:pixi
+      - name: Save visual evidence for review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g8-atmosphere-evidence
+          retention-days: 7
+          path: |
+            lab/senda-premium/G8_*.png
+            lab/senda-premium/G8_ATMOSPHERE_RUNTIME_CERT.json
+          if-no-files-found: ignore
+      - name: Runtime diagnostics on failure
+        if: failure()
+        run: cat /tmp/g8-preview.log || true

@@ -1,0 +1,31 @@
+@import '../g7/g7.css';
+/* G8 depth-facing UI: illustrated with CSS, never extracts/copies the approved key art. */
+:root{--g8-gold:#f8d992;--g8-wood:#543820;--g8-moss:#31553b}
+.shell{max-width:1240px}
+.top{padding:9px 12px 7px;border:1px solid #ad87525b;border-radius:19px;background:linear-gradient(180deg,#1e3a2cdb,#15261d99);box-shadow:0 8px 22px #06130b55}
+.sigil{background:radial-gradient(circle at 48% 29%,#b8d085,#527e4e 37%,#1b513b 72%);border:3px ridge #e2bd78;box-shadow:0 0 0 3px #302218,0 8px 12px #0009;font-size:27px}
+.brand h1{font:bold clamp(22px,3.2vw,35px)/1.1 Georgia,serif;color:#fae2a2;text-shadow:0 2px 0 #6c4120,0 4px 9px #0a140ccc;letter-spacing:.012em}
+.g8-intro{min-height:230px;padding:25px;isolation:isolate;border:4px ridge #c7a069;border-radius:20px;background:
+  radial-gradient(ellipse 17% 31% at 78% 18%,#fff3b1ba 0%,#f1c77b45 44%,transparent 95%),
+  radial-gradient(ellipse 48% 40% at 88% 110%,#466d4d 1%,transparent 96%),
+  linear-gradient(160deg,#102e24 3%,#417a59 45%,#78a57b 74%,#3c6543 100%);
+  box-shadow:inset 0 0 0 3px #301f17,inset 0 -25px 50px #091c17aa,0 13px 27px #0006}
+.g8-intro::before{content:'❧  ✿   ❦   ✧   ❧';position:absolute;pointer-events:none;top:-16px;right:-8px;left:auto;width:35%;height:102%;font:60px Georgia,serif;letter-spacing:7px;color:#e0ebad26;transform:rotate(10deg);text-shadow:0 0 18px #efe4a455}
+.g8-intro::after{content:'';position:absolute;inset:0;pointer-events:none;border-radius:17px;opacity:.65;
+ background:radial-gradient(ellipse 35% 16% at 65% 88%,#d3ecd76b,transparent 94%),linear-gradient(96deg,#091b155b,transparent 75%);}
+.g8-intro .intro-copy{max-width:670px}
+.g8-intro .intro-copy small{font-size:12px;letter-spacing:.2em;color:#f6da9f;text-shadow:0 2px 8px #0009}
+.g8-intro h2{font:bold clamp(28px,4.5vw,48px)/1.06 Georgia,serif;color:#fff3c7;text-shadow:0 2px 0 #805730,0 5px 16px #102d19;margin:13px 0}
+.g8-intro p{font-size:14px;line-height:1.7;color:#f5f4dd}
+.g8-intro .progress-summary{border:2px ridge #d0a866;background:linear-gradient(155deg,#4e3928ec,#162e26e8);box-shadow:inset 0 0 0 2px #8e694355,0 8px 20px #0008;min-width:210px}
+.g8-intro .progress-summary strong{color:#ffe29f;text-shadow:0 2px 6px #100e09}
+.tabs button{border:2px ridge #9f8156;background:linear-gradient(#44684a,#28392e 55%,#1d3125);box-shadow:0 4px 0 #132019;color:#fff1d3}
+.tabs button[aria-current=page]{background:linear-gradient(#ffe1a0,#b48a4b);color:#243c29;box-shadow:0 4px 0 #644526}
+.stage{border:3px ridge #ae8753;box-shadow:inset 0 0 0 2px #e1c38f20,0 16px 28px #0006;background:linear-gradient(#294635,#15291f)}
+.g8-zone-plaque{display:flex;gap:11px;align-items:center;min-height:56px;padding:10px 14px;border:1px solid #dab97b;background:linear-gradient(125deg,#584024,#283d2b 65%,#50603d);border-radius:14px 14px 2px 2px;color:#fce7b4;font:14px/1.5 Georgia,serif;box-shadow:inset 0 0 0 2px #1e301e5e,0 6px 13px #0004;margin:15px 0 4px}
+.g8-zone-sigil{font-size:28px;color:#ffdf95;filter:drop-shadow(0 2px 5px #ffd88c55)}
+.g8-zone-plaque[data-zone='4']{background:linear-gradient(120deg,#3e3059,#2a3049)}
+.g8-zone-plaque[data-zone='6']{background:linear-gradient(120deg,#604b31,#51435d)}
+.map-viewport{box-shadow:inset 0 0 0 2px #ffdc9977,0 16px 25px #07150c99;border:8px ridge #976e41}
+@media(max-width:700px){.g8-intro{min-height:0;padding:18px 16px}.g8-intro h2{font-size:30px}.g8-intro .progress-summary{width:100%;max-width:100%}.g8-intro .intro-copy small{font-size:10px}.g8-zone-plaque{font-size:12px;padding:9px 11px}.g8-zone-sigil{font-size:24px}}
+@media(prefers-reduced-motion:reduce){.g8-intro:before,.g8-intro:after{animation:none!important}}
