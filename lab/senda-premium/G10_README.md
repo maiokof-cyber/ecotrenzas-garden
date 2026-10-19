@@ -10,7 +10,7 @@ G10 lab production candidate. This branch derives from G9 GREEN; does NOT publis
 - 1 E2E per viewport (390x844,1280x800). Asset size and SHA256 are recorded; no audio autoplay, reduced-motion respected, XP and coins never modified by scene.
 
 ## Art constraints
-No asset was cut from the official Key Art; this is derivative of the G9 procedural source sprites. Art remains an **unapproved candidate**, not a statement of final polish. Avoid new paid tooling.
+No asset was cut from the official Key Art; this is derivative of the G9 procedural source sprites. Art remains an **unapproved candidate**, not a statement of final polish. Avoid new paid tooling. Source art generation is reproducible with `python scripts/build-g10-materials.py` (requires Pillow and NumPy only). Original G9 art files remain untouched.
 
 ## Current deployment
 Branch only, no `main` modification. Public G4.2 remains the stable link.
