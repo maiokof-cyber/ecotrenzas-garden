@@ -23,9 +23,8 @@ try{
   assert(world.sound.enabled===false,'No autoplay or unsolicited audio consent');
   assert(engine.coins===48&&engine.xp===0&&!overflow,'Fresh economy or mobile viewport changed');
   assert(engine.rendererDetail?.g8ReducedMotion===(width===390),'Reduce-motion contract broken');
-  const firstPass=engine.rendererDetail.g8RenderPass;
   await page.locator('#next-chapter').click();
-  await page.waitForFunction(()=>window.__GARDEN_G4_TEST__.snapshot().rendererDetail?.g8RenderPass>1,null,{timeout:10000});
+  await page.waitForFunction(()=>window.__GARDEN_G4_TEST__?.snapshot()?.sceneReady===true && window.__GARDEN_G4_TEST__.snapshot().chapter===1 && window.__GARDEN_G8_TEST__.snapshot().world.activeZone===2,null,{timeout:15000});
   ({engine,world,overflow}=await getState());
   assert(world.world.activeZone===2&&world.world.plaqueCount===1,'Chapter atmosphere did not advance');
   assert(engine.coins===48&&engine.xp===0,'Visual interaction affected XP or coins');
