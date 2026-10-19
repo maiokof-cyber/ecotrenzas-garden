@@ -17,6 +17,13 @@ export function installG8World({doc=document}={}){
   function sync(){
     const stage=main.querySelector('.stage'),track=main.querySelector('#g2-map');
     if(!stage||!track)return;
+    const heading=stage.querySelector(':scope > h2');
+    if(heading?.textContent?.includes('2.5D PixiJS'))heading.textContent='🏅 Senda Premium · Mundo 2.5D';
+    const artNote=stage.querySelector('.g3-prototype-disclaimer');
+    const currentArtNote='🎨 G8: paisaje procedural en evolución, capas de atmósfera y sprites de nodos aprobados. Las ilustraciones son fantásticas, no fotografías ni productos reales.';
+    if(artNote&&artNote.textContent!==currentArtNote)artNote.textContent=currentArtNote;
+    const runtimeStatus=stage.querySelector('#g4-renderer-status');
+    if(runtimeStatus?.textContent?.includes('efectos ambientales G5'))runtimeStatus.textContent=runtimeStatus.textContent.replace('efectos ambientales G5','ambientación G8');
     const chapterName=stage.querySelector('#chapter-name')?.textContent||'';
     const index=CHAPTERS.findIndex(ch=>ch.name===chapterName);
     if(index<0)return;
