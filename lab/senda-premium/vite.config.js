@@ -6,7 +6,8 @@ export default defineConfig({
     outDir: 'dist', emptyOutDir: true, sourcemap: true,
     rollupOptions: { input: {
       legacyLab: resolve(import.meta.dirname,'index.html'),
-      g5: resolve(import.meta.dirname,'g5.html')
+      g5: resolve(import.meta.dirname,'g5.html'),
+      g6: resolve(import.meta.dirname,'g6.html')
     }}
   }
 });

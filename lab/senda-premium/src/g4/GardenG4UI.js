@@ -1,6 +1,7 @@
 import { GardenGameplay, SEEDS, CARDS, MOTIVES, MAX_LEVEL, xpFor, coinsFor, SPECIAL, STORAGE_KEY, MISSION_TARGETS } from '../gameplay/GardenGameplay.mjs';
 import {CHAPTERS} from '../data/g2-chapters.js';
 import {StyleAtlas} from './StyleAtlas.mjs';
+import { cardArtUrl, cardImageAlt } from '../g6/CardArt.mjs';
 import {SERVICE_FAMILIES,SERVICE_IDS,STORE_SITES,STAMP_COUNT,SERVICE_IG_URL,serviceById,suggestedServices} from '../data/g4-services.js';
 // Single shared GardenGameplay engine; the visual scene never awards rewards directly.
 export function mountGame(TrackSceneClass, FallbackSceneClass = null) {
@@ -43,7 +44,7 @@ function album() {
   const cards=CARDS.map((c,i)=>{
     const have=s.unlocked.includes(c.id),can=game.canUnlock(c.id);
     const ingredients=Object.entries(c.recipe).map(([k,n])=>`${SEEDS[k].icon} ${names[k]} ×${n}`).join(' · ');
-    return `<article class="card ${have?'owned':''}"><div class="cardpic" style="--tone:${tones[i]}">${ico[i]}</div><h3>${c.name}</h3><small>${c.rarity} · Referencia fantástica</small><p>${c.desc}</p><div class="ingredients">${ingredients}</div><button class="action ${have?'alt':''}" data-unlock="${c.id}" ${!can?'disabled':''}>${have?'✓ Coleccionada':can?'Descubrir carta':'Reúne pigmentos'}</button>${have?`<button class="action alt" style="margin-top:8px" data-equip="${c.id}">🪞 ${s.equipped===c.id?'Equipada':'Vestidor'}</button>`:''}</article>`;
+    return `<article class="card g6-fantasy-card ${have?'owned':'g6-locked'}" data-card="${c.id}"><div class="cardpic g6-card-art" style="--tone:${tones[i]}"><img class="g6-card-image" src="${cardArtUrl(c.id)}" alt="${cardImageAlt(c)}" loading="eager" decoding="async"><span class="g6-card-rarity" aria-label="Rareza épica">◆ ÉPICA</span><span class="g6-card-flair" aria-hidden="true">${ico[i]}</span>${!have?'<span class="g6-card-seal" aria-hidden="true">✦</span>':''}</div><h3>${c.name}</h3><small>${c.rarity} · Ilustración de fantasía</small><p>${c.desc}</p><div class="ingredients">${ingredients}</div><button class="action ${have?'alt':''}" data-unlock="${c.id}" ${!can?'disabled':''}>${have?'✓ Coleccionada':can?'✨ Revelar carta':'Reúne pigmentos'}</button>${have?`<button class="action alt" style="margin-top:8px" data-equip="${c.id}">🪞 ${s.equipped===c.id?'Equipada':'Vestidor'}</button>`:''}</article>`;
   }).join('');
   return `<section class="stage"><h2>🎴 Álbum Wooldreads</h2><p class="note">Las seis cartas existentes se mantienen con sus recetas originales. Completa la colección para abrir la cuarta parcela. Las imágenes y nombres son inspiración de fantasía, no modelos exactos ni disponibilidad comercial.</p><div class="cardgrid">${cards}</div></section>`;
 }
@@ -110,7 +111,7 @@ function mountTrack() {
 function style() {
   const s=game.snapshot(),a=atlas.snapshot(),choices=game.discover();
   const motiveButtons=MOTIVES.map(m=>`<button type="button" data-motive="${m.id}" class="${s.motive===m.id?'active':''}" aria-pressed="${s.motive===m.id}">${m.label}</button>`).join('');
-  const fantasyChoices=choices.map(c=>`<div class="choice"><h3>${c.name}</h3><p class="note">${c.desc}</p><button type="button" class="action" data-select="${c.id}">${s.selected===c.id?'✓ Elegida':'Elegir inspiración'}</button></div>`).join('');
+  const fantasyChoices=choices.map(c=>`<div class="choice g6-inspiration"><div class="g6-choice-visual"><img src="${cardArtUrl(c.id)}" loading="eager" decoding="async" alt="${cardImageAlt(c)}"></div><h3>${c.name}</h3><p class="note">${c.desc}</p><button type="button" class="action" data-select="${c.id}">${s.selected===c.id?'✓ Elegida':'Elegir inspiración'}</button></div>`).join('');
   const chosen=CARDS.find(c=>c.id===s.selected);
   const advisory=s.motive==='cabello';
   const ordered=suggestedServices(s.motive);
@@ -143,6 +144,35 @@ function draft() {
   return `Hola EcoTienda 🌿. En EcoTrenzas Garden exploré ${selected?.name||'sus peinados'}${c?' y me inspiró la carta de fantasía '+c.name:''}. Me interesa: ${motivation(s.motive)}.${a.preferredSede?' Preferiría la sede '+a.preferredSede+'.':''} ¿Me pueden orientar sobre un servicio real adecuado para mí, su precio vigente y la disponibilidad?`;
 }
 function render(){sceneEpoch++;if(scene){try{scene.destroy()}catch(error){console.warn('G4_RENDERER_CLEANUP',String(error))}scene=null;}sceneReady=false;header();q('main').innerHTML={garden,album,track,style}[tab]();if(tab==='track')mountTrack();}
+function revealCard(cardId){
+  const card=CARDS.find(c=>c.id===cardId);if(!card)return;
+  // Visual celebration ONLY: no XP, currencies or commercial effects.
+  let dialog=document.getElementById('g6-reveal');
+  if(!dialog){
+    dialog=document.createElement('dialog');dialog.id='g6-reveal';dialog.className='g6-reveal';
+    dialog.setAttribute('aria-labelledby','g6-reveal-title');
+    document.body.append(dialog);
+    dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close();});
+    dialog.addEventListener('click',event=>{
+      const button=event.target.closest('button');if(!button)return;
+      if(button.dataset.revealAction==='close'){dialog.close();return;}
+      if(button.dataset.revealAction==='equip'){
+        const id=dialog.dataset.cardId;
+        if(CARDS.some(c=>c.id===id)&&game.equip(id)){
+          dialog.close();tab='album';render();toast('Estilo de fantasía equipado en el vestidor virtual');
+        }
+      }
+    });
+    dialog.addEventListener('close',()=>{
+      const id=dialog.dataset.cardId;
+      document.querySelector(`[data-card="${id}"] button[data-equip]`)?.focus();
+    });
+  }
+  dialog.dataset.cardId=card.id;
+  dialog.innerHTML=`<div class="g6-reveal-panel"><span class="g6-reveal-crown" aria-hidden="true">✦ Carta descubierta ✦</span><div class="g6-reveal-poster"><img src="${cardArtUrl(card.id)}" alt="${cardImageAlt(card)}" decoding="async"><span class="g6-reveal-beam" aria-hidden="true"></span></div><span class="g6-reveal-rank">◆ ÉPICA · WOOLDREADS</span><h2 id="g6-reveal-title">${card.name}</h2><p>${card.desc}. La carta se añadió a tu álbum.</p><p class="g6-reveal-note">Esta ilustración es fantástica; no representa un peinado real ni un beneficio comercial.</p><div class="g6-reveal-actions"><button type="button" class="action" data-reveal-action="equip">🪞 Probar en el avatar</button><button type="button" class="action alt" data-reveal-action="close">Seguir coleccionando</button></div></div>`;
+  dialog.showModal();
+  dialog.querySelector('[data-reveal-action="close"]')?.focus();
+}
 function act(cb,success='¡Listo!') {try{const res=cb();if(res===false||res===null)toast('No se puede completar todavía');else toast(success);}catch(e){toast('Acción detenida: '+e.message)}render();}
 document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{tab=b.dataset.tab;render()}));
 q('main').addEventListener('click',e=>{
@@ -157,7 +187,12 @@ q('main').addEventListener('click',e=>{
     if(job==='water')act(()=>game.water(index),'La semilla crecerá más rápido');
     if(job==='harvest')act(()=>game.harvest(index),'¡Cosecha realizada! XP y recompensas actualizadas');
   }
-  if(b.dataset.unlock)act(()=>game.unlock(b.dataset.unlock),'¡Carta nueva para tu álbum!');
+  if(b.dataset.unlock){
+    const cardId=b.dataset.unlock;
+    if(!game.canUnlock(cardId)){toast('Reúne pigmentos para desbloquearla');return;}
+    if(!game.unlock(cardId)){toast('La carta no está disponible');return;}
+    render();revealCard(cardId);
+  }
   if(b.dataset.equip)act(()=>game.equip(b.dataset.equip),'Nuevo look equipado en el vestidor virtual');
   if(b.dataset.motive)act(()=>game.chooseMotive(b.dataset.motive),'Exploración personalizada');
   if(b.dataset.select)act(()=>game.select(b.dataset.select),'Inspiración elegida');

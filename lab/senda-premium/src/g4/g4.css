@@ -52,3 +52,35 @@
 
 /* G4.1 honest runtime diagnostics */
 .g4-renderer-status{margin:0;padding:8px 12px;background:#193a2c;border:1px solid #719b73;color:#e8f0d5;font:600 12px/1.5 system-ui,sans-serif;border-radius:9px;}
+
+/* G6 — premium card collectibility, original artwork, zero monetization / reward mutation */
+.g6-fantasy-card{position:relative;transition:transform .23s ease,box-shadow .23s ease,border-color .23s ease;isolation:isolate;border:2px solid #ba9862;background:linear-gradient(145deg,#4a3542,#1b342c 80%);box-shadow:inset 0 0 0 2px #e1bc7952,0 5px 0 #101c15,0 14px 22px #0004}
+.g6-fantasy-card:hover,.g6-fantasy-card:focus-within{transform:translateY(-3px);border-color:#ecd195;box-shadow:inset 0 0 0 2px #e1bc7952,0 7px 0 #101c15,0 16px 28px #0008}
+.g6-card-art{height:auto;aspect-ratio:4/5;isolation:isolate;display:block;overflow:hidden;position:relative;border:3px solid #b99859;box-shadow:inset 0 0 0 2px #452d24,0 2px 10px #0007;background:#29382d}
+.g6-card-image{display:block;width:100%;height:100%;object-fit:cover;object-position:center;transition:filter .3s ease,transform .42s ease}
+.g6-fantasy-card:hover .g6-card-image{transform:scale(1.035)}
+.g6-locked .g6-card-image{filter:brightness(.6) saturate(.7) grayscale(.25)}
+.g6-card-art:after{content:'';position:absolute;inset:-60% -120%;background:linear-gradient(105deg,transparent 40%,#fff8cb21 47%,#fff9d859 50%,#fff8cb21 53%,transparent 60%);transform:translateX(-46%) rotate(4deg);pointer-events:none;transition:transform .75s ease}
+.g6-fantasy-card:hover .g6-card-art:after,.g6-fantasy-card:focus-within .g6-card-art:after{transform:translateX(38%) rotate(4deg)}
+.g6-card-rarity{position:absolute;z-index:1;left:7px;bottom:8px;padding:5px 9px;border-radius:7px;border:1px solid #f2db9e;color:#fff0bd;background:#442c35e8;font:900 10px system-ui;letter-spacing:.08em;text-shadow:0 1px 2px #000}
+.g6-card-flair{position:absolute;z-index:1;right:8px;top:8px;font-size:21px;filter:drop-shadow(0 2px 3px #0019)}
+.g6-card-seal{position:absolute;inset:0;z-index:1;display:grid;place-items:center;font:900 38px Georgia,serif;color:#efdbacaa;text-shadow:0 4px 10px #0008;pointer-events:none}
+.g6-locked{border-color:#80765d}.g6-fantasy-card.owned{border-color:#f5d181}
+.g6-choice-visual{height:144px;margin:-4px -4px 10px;border:2px solid #b99e69;overflow:hidden;border-radius:12px;background:#1d352a}
+.g6-choice-visual img{width:100%;height:100%;object-fit:cover;display:block}
+.g6-inspiration h3{margin:6px 0}.g6-inspiration .action{margin-top:8px}
+.g6-reveal{padding:0;border:1px solid #e6c889;border-radius:22px;max-width:min(420px,calc(100vw - 32px));max-height:calc(100dvh - 30px);width:100%;background:#213527;color:#fff2d7;box-shadow:0 25px 100px #000c;overflow:auto}
+.g6-reveal::backdrop{background:#07150cc9;backdrop-filter:blur(3px)}
+.g6-reveal-panel{text-align:center;padding:17px 19px 22px;background:radial-gradient(circle at 50% 22%,#95754a55,transparent 48%),linear-gradient(#294d3a,#17281f)}
+.g6-reveal-crown{display:block;letter-spacing:.14em;text-transform:uppercase;font:800 12px system-ui;color:#ecd695;margin:0 0 10px}
+.g6-reveal-poster{height:min(48dvh,300px);width:min(260px,100%);margin:auto;position:relative;overflow:hidden;border-radius:15px;border:6px ridge #c8a45e;box-shadow:0 10px 0 #584025,0 17px 30px #0007;animation:g6-unveil .55s ease-out both}
+.g6-reveal-poster img{height:100%;width:100%;object-fit:cover;display:block}
+.g6-reveal-beam{position:absolute;inset:0;background:linear-gradient(103deg,transparent 33%,#ffedab66 50%,transparent 67%);transform:translateX(-120%);animation:g6-beam 1s .25s ease-out forwards;pointer-events:none}
+.g6-reveal-rank{display:block;margin:18px 0 3px;font-size:10px;font-weight:900;letter-spacing:.13em;color:#efd69a}
+.g6-reveal h2{font:800 29px Georgia,serif;margin:5px 0 10px}.g6-reveal p{line-height:1.5;font-size:13px;margin:0 0 10px}
+.g6-reveal-note{font-size:11px!important;color:#d2c6a8}
+.g6-reveal-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:13px}.g6-reveal-actions button{flex:1 1 145px;min-height:46px}
+@keyframes g6-unveil{from{opacity:.3;transform:translateY(18px) scale(.92)}to{opacity:1;transform:none}}
+@keyframes g6-beam{to{transform:translateX(130%)}}
+@media(max-width:700px){.g6-card-art{aspect-ratio:3/4}.g6-fantasy-card .cardpic{height:auto}.g6-card-rarity{font-size:9px;padding:4px 5px}.g6-choice-visual{height:180px}}
+@media(prefers-reduced-motion:reduce){.g6-fantasy-card,.g6-card-image,.g6-card-art:after,.g6-reveal-poster,.g6-reveal-beam{transition:none!important;animation:none!important}}

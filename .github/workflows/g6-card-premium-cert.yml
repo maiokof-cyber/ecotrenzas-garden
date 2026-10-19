@@ -1,0 +1,53 @@
+name: G6 Premium Card and Pixi Cert
+on:
+  push:
+    branches:
+      - lab/g6-card-premium
+    paths:
+      - 'lab/senda-premium/**'
+      - '.github/workflows/g6-card-premium-cert.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  g6:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: lab/senda-premium
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install
+        run: npm install --no-audit --no-fund
+      - name: Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Economy and cards
+        run: npm run test:g5:core && npm run test:g6:core
+      - name: Production build
+        run: npm run build
+      - name: Real PixiJS browser card acceptance
+        run: |
+          npm run preview -- --host 127.0.0.1 --port 4173 > /tmp/g6-preview.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
+          for i in {1..40}; do
+            if curl -fsS http://127.0.0.1:4173/g6.html >/dev/null; then break; fi
+            sleep 1
+          done
+          xvfb-run -a npm run test:g6:pixi
+      - name: Art and mobile evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g6-premium-card-evidence
+          path: |
+            lab/senda-premium/G6_*.png
+            lab/senda-premium/G6_CARD_RUNTIME_CERT.json
+          if-no-files-found: ignore
+      - name: Server diagnostic on failure
+        if: failure()
+        run: cat /tmp/g6-preview.log || true
