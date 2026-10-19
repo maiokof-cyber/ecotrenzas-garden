@@ -25,6 +25,7 @@ try{
   assert(state.e.coins===48&&state.e.xp===0&&!state.overflow,'Player economy or mobile layout regressed');
   assert(d.g8ReducedMotion===(width===390),'Motion accessibility regression');
   assert(state.w.sound.enabled===false,'G7 default audio must remain OFF');
+  assert(state.w.artUI.notes===1,'G9 art status label missing');
   await page.locator('#g2-map').screenshot({path:`G9_MAP_ZONE1_${width}.png`});
   await page.locator('#next-chapter').click();
   await page.waitForFunction(()=>window.__GARDEN_G4_TEST__?.snapshot()?.sceneReady===true && window.__GARDEN_G4_TEST__.snapshot().chapter===1 && window.__GARDEN_G9_TEST__?.snapshot()?.world.activeZone===2,null,{timeout:25000});
