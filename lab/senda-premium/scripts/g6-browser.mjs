@@ -37,6 +37,7 @@ try{
     await dialog.waitFor({state:'visible'});
     assert(await dialog.evaluate(el=>el.open===true),'Accessible modal must be opened');
     assert(await dialog.locator('img').evaluate(img=>img.complete&&img.naturalWidth>0),'Full-resolution original card image missing');
+    await page.screenshot({path:`G6_REVEAL_${width}.png`});
     let after=await page.evaluate(()=>window.__GARDEN_G4_TEST__.snapshot());
     assert(after.unlocked===1&&after.xp===90&&after.coins===88,'Historical unlock XP / coin reward modified: '+JSON.stringify(after));
     await dialog.locator('[data-reveal-action="close"]').click();
