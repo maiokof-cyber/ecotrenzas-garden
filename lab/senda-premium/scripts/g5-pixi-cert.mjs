@@ -40,7 +40,8 @@ try {
     await page.waitForFunction(()=>window.__GARDEN_G4_TEST__.snapshot().sceneReady===true,{},{timeout:20000});
     const after=await page.evaluate(()=>({s:window.__GARDEN_G4_TEST__.snapshot(),overflow:document.documentElement.scrollWidth>innerWidth+2}));
     if(after.s.rendererMode!=='pixi'||after.overflow||errors.length)throw Error('RUNTIME_REGRESSION '+JSON.stringify({after,errors}));
-    await page.screenshot({path:`G5_PIXI_${width}.png`});
+    await page.locator('#g2-map').screenshot({path:`G5_PIXI_MAP_${width}.png`});
+    await page.screenshot({path:`G5_PIXI_${width}.png`,fullPage:true});
     record.push({viewport:`${width}x${height}`,mode:after.s.rendererMode,sha256:after.s.rendererDetail?.approvedNodeSHA256,nodes:after.s.rendererDetail?.nodeSprites,coins:after.s.coins,xp:after.s.xp,errors});
     await ctx.close();
   }
