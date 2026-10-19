@@ -1,0 +1,4 @@
+/* G11 is additive presentation, not a new UI/runtime architecture. */
+.g8-intro{background:radial-gradient(ellipse at 83% 18%,#ecd4a557,transparent 42%),linear-gradient(120deg,#1c4133,#396b57 70%,#273f4a);border-color:#e0bf75;box-shadow:inset 0 0 0 1px #ffe9a84d,0 13px 28px #0917107d}
+.g11-prototype-note{font:600 11px/1.55 system-ui;color:#dccda8;margin:9px 0 13px}
+@media(prefers-reduced-motion:reduce){.g8-intro{transition:none!important}}

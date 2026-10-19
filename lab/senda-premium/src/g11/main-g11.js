@@ -1,0 +1,18 @@
+import '../g9/g9.css';
+import '../g10/g10.css';
+import './g11.css';
+import { mountGame } from '../g4/GardenG4UI.js';
+import { TrackG11PixiScene } from './TrackG11PixiScene.js';
+import { TrackG3CanvasScene } from '../g3/TrackG3CanvasScene.js';
+import { installG7Sensory } from '../g7/Sensory.mjs';
+import { installG8World } from '../g8/WorldUI.mjs';
+import { installG9WorldUI } from '../g9/WorldG9UI.js';
+import { installG10WorldUI } from '../g10/WorldG10UI.js';
+import { installG11WorldUI } from './WorldG11UI.js';
+mountGame(TrackG11PixiScene,TrackG3CanvasScene);
+const sensory=installG7Sensory();
+const world=installG8World();
+const g9ui=installG9WorldUI();
+const g10ui=installG10WorldUI();
+const g11ui=installG11WorldUI();
+window.__GARDEN_G11_TEST__={snapshot:()=>({sound:sensory.diagnostics(),world:world.diagnostics(),g9ui:g9ui.diagnostics(),g10ui:g10ui.diagnostics(),g11ui:g11ui.diagnostics()})};

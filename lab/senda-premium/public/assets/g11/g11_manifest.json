@@ -1,0 +1,32 @@
+{
+  "status": "ART_CANDIDATE_NOT_APPROVED",
+  "direction": "KEYART_SEMILLERO_MAGICO_V1",
+  "fullSceneUsed": false,
+  "noUserCommerceData": true,
+  "sprites": {
+    "blossom_canopy.png": {
+      "width": 340,
+      "height": 173,
+      "bytes": 127539,
+      "sha256": "676e89529d5453fad96703b44a36193d67aa722230dfce85a97063b5d2c05e06"
+    },
+    "cascade_cliff.png": {
+      "width": 196,
+      "height": 384,
+      "bytes": 160461,
+      "sha256": "84ca976508a3ad04987601e423887dd6958e953242a7b617bad904e8216750c1"
+    },
+    "motes.png": {
+      "width": 192,
+      "height": 192,
+      "bytes": 1944,
+      "sha256": "e9b70677965e9b1c9906d492db43acbb04e5fc6f83b1b714af7890f1816b3eb3"
+    },
+    "sky_dawn.png": {
+      "width": 960,
+      "height": 245,
+      "bytes": 335288,
+      "sha256": "95d4d49ecc4c26c9f8b3456d35a91c24c572f0c516eeac9d6d8afeed0838130e"
+    }
+  }
+}
