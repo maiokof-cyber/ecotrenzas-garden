@@ -1,0 +1,19 @@
+/* G7 magic: additive cosmetics only; never alters hitboxes or game state. */
+.g7-sound-area{display:flex;justify-content:flex-end;align-items:center;gap:9px;margin:-2px 0 8px}
+.g7-sound-btn{min-height:40px;padding:7px 13px;border:1px solid #c0a573;border-radius:12px;background:linear-gradient(160deg,#344f39,#162b23);color:#f8e9bc;font-size:12px;font-weight:800;box-shadow:inset 0 0 0 1px #ebcf8240}
+.g7-sound-btn[aria-pressed="true"]{background:linear-gradient(155deg,#846037,#345a42);border-color:#e9cc8a}
+.g7-sound-btn:focus-visible{outline:3px solid #fbe18f;outline-offset:3px}
+.g7-sound-note{font-size:11px;color:#d6cca6}
+.g7-screenreader{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.g6-reveal-panel{position:relative;isolation:isolate}
+.g6-reveal-panel>*:not(.g7-reveal-magic){position:relative;z-index:2}
+.g6-reveal-poster{box-shadow:0 10px 0 #584025,0 17px 30px #0007,0 0 30px #fbd78555}
+.g7-reveal-magic{position:absolute;inset:0;z-index:3;overflow:hidden;pointer-events:none}
+.g7-reveal-magic i{position:absolute;top:35%;left:50%;width:7px;height:7px;border-radius:50%;background:#ffe5a1;box-shadow:0 0 10px 2px #ffeaae,0 0 20px #fae58d;opacity:0;animation:g7-spark 1.25s var(--delay) ease-out both}
+.g7-reveal-magic i:nth-child(3n){background:#f3d6ff;box-shadow:0 0 12px #e3c4ff}
+.g7-reveal-magic i:nth-child(4n){width:5px;height:12px;border-radius:65% 15% 65% 15%;background:#ffca8b}
+.g6-fantasy-card.owned .g6-card-art{box-shadow:inset 0 0 0 2px #d9b170,0 0 0 2px #ffe3a566,0 0 18px #f4c37d30}
+.g6-fantasy-card.owned .g6-card-rarity{background:linear-gradient(110deg,#57362c,#90602e);border-color:#f5dc94}
+@keyframes g7-spark{0%{opacity:0;transform:rotate(var(--angle)) translateX(0) scale(.2)}12%{opacity:1}70%{opacity:.94}100%{opacity:0;transform:rotate(var(--angle)) translateX(var(--radius)) scale(.3)}}
+@media(max-width:700px){.g7-sound-area{flex-wrap:wrap;justify-content:flex-start;margin:0 0 8px}.g7-sound-note{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.g7-reveal-magic{display:none!important}.g7-reveal-magic i{animation:none!important}.g6-reveal-poster{animation:none!important}}
