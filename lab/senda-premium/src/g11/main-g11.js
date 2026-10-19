@@ -1,3 +1,4 @@
+import '../g8/g8.css';
 import '../g9/g9.css';
 import '../g10/g10.css';
 import './g11.css';
