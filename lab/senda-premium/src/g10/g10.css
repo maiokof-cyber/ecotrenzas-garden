@@ -1,0 +1,5 @@
+/* G10: richer composition without costly effects or gameplay changes. */
+.map-viewport{border-color:#bc995d;box-shadow:inset 0 0 0 2px #e7ce916e,0 0 0 1px #302416,0 13px 26px #071713bd}
+.g10-prototype-note{font-size:11px;color:#e6d3a7;line-height:1.5;margin:9px 0 13px}
+.g8-intro{background-image:radial-gradient(circle at 72% 30%,#f6d99135,transparent 42%),linear-gradient(125deg,#203a2b,#3b6952 72%,#173527)}
+@media(prefers-reduced-motion:reduce){.map-viewport{transition:none}}

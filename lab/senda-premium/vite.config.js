@@ -10,7 +10,8 @@ export default defineConfig({
       g6: resolve(import.meta.dirname,'g6.html'),
       g7: resolve(import.meta.dirname,'g7.html'),
       g8: resolve(import.meta.dirname,'g8.html'),
-      g9: resolve(import.meta.dirname,'g9.html')
+      g9: resolve(import.meta.dirname,'g9.html'),
+      g10: resolve(import.meta.dirname,'g10.html')
     }}
   }
 });

@@ -1,7 +1,7 @@
 {
   "name": "ecotrenzas-garden-senda-premium-lab",
   "private": true,
-  "version": "0.9.0",
+  "version": "0.10.0",
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
@@ -14,7 +14,8 @@
     "test:g6:pixi": "node scripts/g6-browser.mjs",
     "test:g7:pixi": "node scripts/g7-browser.mjs",
     "test:g8:pixi": "node scripts/g8-browser.mjs",
-    "test:g9:pixi": "node scripts/g9-browser.mjs"
+    "test:g9:pixi": "node scripts/g9-browser.mjs",
+    "test:g10:pixi": "node scripts/g10-browser.mjs"
   },
   "dependencies": {
     "pixi.js": "^8.0.0"

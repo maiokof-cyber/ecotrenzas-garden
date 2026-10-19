@@ -12,12 +12,12 @@ const IMAGES = {
 export class TrackG9PixiScene extends TrackG8PixiScene {
   constructor(opts){
     super(opts);
-    this.g9Textures=null;this.g9Far=null;this.g9Near=null;this.g9AssetsCount=0;
+    this.g9AssetPaths=opts?.g9AssetPaths??IMAGES;this.g9Textures=null;this.g9Far=null;this.g9Near=null;this.g9AssetsCount=0;
     this.g9Tick=null;this.g9Time=0;this.g9LastDraw=0;
   }
   async mount(host){
     // Load before the base mount invokes this.draw(). A stale scene is never attached.
-    const items=await Promise.all(Object.entries(IMAGES).map(async ([key,path])=>[key,await Assets.load(path)]));
+    const items=await Promise.all(Object.entries(this.g9AssetPaths).map(async ([key,path])=>[key,await Assets.load(path)]));
     if(this.disposed)return;
     this.g9Textures=Object.fromEntries(items);
     if(items.some(([,tex])=>!tex||tex.width<2||tex.height<2))throw Error('G9_SPRITE_ASSET_MISSING');

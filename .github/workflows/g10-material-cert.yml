@@ -1,0 +1,53 @@
+name: G10 Material Art and Pixi Cert
+on:
+  push:
+    branches: [lab/g10-material-premium]
+    paths:
+      - 'lab/senda-premium/**'
+      - '.github/workflows/g10-material-cert.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  g10:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: lab/senda-premium
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install existing dependencies
+        run: npm install --no-audit --no-fund
+      - name: Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Preserve original economy and collection
+        run: npm run test:g5:core && npm run test:g6:core
+      - name: Build existing G5-G10 Vite pages
+        run: npm run build
+      - name: Real PixiJS and material art E2E
+        run: |
+          npm run preview -- --host 127.0.0.1 --port 4173 > /tmp/g10-preview.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
+          for i in {1..40}; do
+            if curl -fsS http://127.0.0.1:4173/g10.html > /dev/null; then break; fi
+            sleep 1
+          done
+          xvfb-run -a npm run test:g10:pixi
+      - name: Limited retention of visual evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g10-material-art-evidence
+          retention-days: 7
+          path: |
+            lab/senda-premium/G10_*.png
+            lab/senda-premium/G10_ART_RUNTIME_CERT.json
+          if-no-files-found: ignore
+      - name: Diagnostics on failure
+        if: failure()
+        run: cat /tmp/g10-preview.log || true
