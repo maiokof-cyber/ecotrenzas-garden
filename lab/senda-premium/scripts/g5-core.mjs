@@ -1,0 +1,28 @@
+import assert from 'node:assert/strict';
+import {GardenGameplay,MAX_LEVEL,MAX_XP,xpFor,coinsFor,CARDS,initialState} from '../src/gameplay/GardenGameplay.mjs';
+import {SERVICE_FAMILIES,SERVICE_IDS,STORE_SITES,suggestedServices} from '../src/data/g4-services.js';
+import {StyleAtlas} from '../src/g4/StyleAtlas.mjs';
+const memory=new Map();
+const storage={getItem:k=>memory.get(k)??null,setItem:(k,v)=>memory.set(k,v),removeItem:k=>memory.delete(k)};
+let now=Date.now();const g=new GardenGameplay({now:()=>now,storage});
+const atlas=new StyleAtlas({storage});
+assert.equal(MAX_LEVEL,30);assert.equal(MAX_XP,7192);assert.equal(xpFor(30),MAX_XP);
+assert.equal(Array.from({length:29},(_,i)=>coinsFor(i+2)).reduce((a,b)=>a+b,0),2160);
+assert.equal(CARDS.length,6);assert.equal(SERVICE_FAMILIES.length,5);
+for(const id of SERVICE_IDS){assert.equal(atlas.exploreService(id),true)}
+assert.equal(atlas.snapshot().exploredServices.length,5);
+assert.equal(atlas.exploreService(SERVICE_IDS[0]),true);
+assert.equal(atlas.snapshot().exploredServices.length,5,'No duplicate exploration stamp');
+assert.equal(atlas.exploreService('invalid'),false);
+assert.equal(atlas.chooseSede('Rancagua'),true);assert.equal(atlas.chooseSede('fake'),false);
+const reload=new StyleAtlas({storage});
+assert.equal(reload.snapshot().selectedService,SERVICE_IDS[0]);
+assert.equal(reload.snapshot().preferredSede,'Rancagua');
+assert.equal(reload.snapshot().exploredServices.length,5);
+assert.equal(g.state.xp,0,'Browsing must not award XP');assert.equal(g.state.coins,48,'Browsing must not award coins');
+assert.equal(suggestedServices('cabello').length,0,'Hair condition must route to human advice');
+assert.equal(suggestedServices('color').length,5);
+assert.deepEqual(STORE_SITES,['Ñuñoa','Rancagua','Viña del Mar']);
+assert.equal(g.plant(0),true);assert.equal(g.state.coins,44);now+=40000;assert.equal(g.harvest(0).coins,9);assert.equal(g.state.coins,53);assert.equal(g.state.xp,42);
+assert.equal(g.harvest(0),null,'No duplicate harvest');
+console.log('G4_CORE_GREEN: 30 levels / 5 services / unique stamps / persisted selection / no XP leakage / legacy economy preserved');
