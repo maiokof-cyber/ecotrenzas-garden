@@ -20,6 +20,8 @@ try{
   assert(d.nodeSprites===5&&d.g8DepthLayers===3&&d.g10MaterialCount===3,'Inherited G10 scene missing');
   assert(d.g11ArtTextures===4&&d.g11SkySprites===1&&d.g11DepthSprites===3&&d.g11FullKeyArtUsed===false&&d.g11NoGameStateWrites,'G11 modular art invalid');
   assert(!x.g11.sound.enabled&&!x.overflow&&x.s.coins===48&&x.s.xp===0,'Economy, audio default or mobile overflow');
+  const styledAudio=await page.locator('#g7-sound').evaluate(el=>parseFloat(getComputedStyle(el).minHeight)>=39);
+  assert(styledAudio,'G7 audiovisual styles unexpectedly missing');
   assert(d.g8ReducedMotion===(width===390),'Accessibility motion mismatch');
   await page.locator('#g2-map').screenshot({path:`G11_MAP_ZONE1_${width}.png`});
   await page.locator('#next-chapter').click();
