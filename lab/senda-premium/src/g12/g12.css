@@ -1,0 +1,4 @@
+/* G12 cosmetic only; maintain 44px touch targets and G7 accessible audio. */
+.g12-prototype-note{color:#f0e1b8;font-size:11px;line-height:1.5}
+.g8-intro{box-shadow:inset 0 0 0 1px #fff2b644,0 12px 30px #111d1877}
+@media(prefers-reduced-motion:reduce){.g12-prototype-note{transition:none!important}}

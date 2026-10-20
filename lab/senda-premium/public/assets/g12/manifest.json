@@ -1,0 +1,57 @@
+{
+  "version": "G12-candidate-v1",
+  "scene_coordinates": [
+    960,
+    540
+  ],
+  "pixel_ratio": 2,
+  "node_layout": [
+    [
+      105,
+      356
+    ],
+    [
+      295,
+      288
+    ],
+    [
+      478,
+      338
+    ],
+    [
+      667,
+      263
+    ],
+    [
+      848,
+      320
+    ]
+  ],
+  "node_layout_modified": false,
+  "assets": {
+    "terrain_painterly.png": {
+      "bytes": 1052115,
+      "sha256": "7ed99908225c0224933b40a313a0748e19865d023e86f24e6720b7401b674a56",
+      "dimensions": [
+        1920,
+        1080
+      ]
+    },
+    "braided_route.png": {
+      "bytes": 133616,
+      "sha256": "26f51447a6aed571221485f6a0018767380d8b303bdd3187c6ac646e2052e83a",
+      "dimensions": [
+        1920,
+        1080
+      ]
+    },
+    "foreground_garden.png": {
+      "bytes": 23362,
+      "sha256": "597cad20e5c3d95ed46df0b7dbf3204d3d8d43bbd0d0e37b4c56e943283bb431",
+      "dimensions": [
+        1920,
+        1080
+      ]
+    }
+  }
+}

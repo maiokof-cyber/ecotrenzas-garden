@@ -1,0 +1,55 @@
+name: G12 Illustrated Terrain WebGL Cert
+on:
+  push:
+    branches: [lab/g12-terrain-premium]
+    paths:
+      - 'lab/senda-premium/**'
+      - '.github/workflows/g12-terrain-cert.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  g12:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: lab/senda-premium
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install existing dependencies
+        run: npm install --no-audit --no-fund
+      - name: Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Validate sprite integrity and size budget
+        run: npm run test:g12:art
+      - name: Preserve historic economy
+        run: npm run test:g5:core && npm run test:g6:core
+      - name: Build G5-G12
+        run: npm run build
+      - name: Certify original nodes, WebGL, chapters, cards and services
+        run: |
+          npm run preview -- --host 127.0.0.1 --port 4173 > /tmp/g12-preview.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
+          for i in {1..40}; do
+            if curl -fsS http://127.0.0.1:4173/g12.html >/dev/null; then break; fi
+            sleep 1
+          done
+          xvfb-run -a npm run test:g12:pixi
+      - name: Preserve limited acceptance evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g12-illustrated-terrain-evidence
+          retention-days: 7
+          path: |
+            lab/senda-premium/G12_*.png
+            lab/senda-premium/G12_RUNTIME_CERT.json
+          if-no-files-found: ignore
+      - name: Preview diagnostic
+        if: failure()
+        run: cat /tmp/g12-preview.log || true

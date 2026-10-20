@@ -1,0 +1,20 @@
+// G12 is an additive presentation layer. Reuse ALL certified gameplay from G11.
+import '../g8/g8.css';
+import '../g9/g9.css';
+import '../g10/g10.css';
+import '../g11/g11.css';
+import './g12.css';
+import {mountGame} from '../g4/GardenG4UI.js';
+import {TrackG12PixiScene} from './TrackG12PixiScene.js';
+import {TrackG3CanvasScene} from '../g3/TrackG3CanvasScene.js';
+import {installG7Sensory} from '../g7/Sensory.mjs';
+import {installG8World} from '../g8/WorldUI.mjs';
+import {installG9WorldUI} from '../g9/WorldG9UI.js';
+import {installG10WorldUI} from '../g10/WorldG10UI.js';
+import {installG11WorldUI} from '../g11/WorldG11UI.js';
+import {installG12WorldUI} from './WorldG12UI.js';
+mountGame(TrackG12PixiScene,TrackG3CanvasScene);
+const sensory=installG7Sensory(),world=installG8World();
+installG9WorldUI();installG10WorldUI();installG11WorldUI();
+const world12=installG12WorldUI();
+window.__GARDEN_G12_TEST__={snapshot:()=>({sound:sensory.diagnostics(),world:world.diagnostics(),g12ui:world12.diagnostics()})};
