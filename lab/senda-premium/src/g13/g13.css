@@ -1,0 +1,12 @@
+/* G13: accessible action size and legible goal-focused play, no theme reset. */
+.g13-guide,.g13-banner{margin:14px 0 18px;padding:15px;border:1px solid #e1be77;border-radius:16px;background:linear-gradient(140deg,#274f3e,#1b382d);box-shadow:inset 0 0 0 1px #e5be5530,0 8px 20px #06180a70;color:#f7edd1}
+.g13-guide>strong,.g13-banner>strong{font:700 19px Georgia,serif;display:block;margin-bottom:6px}
+.g13-banner span,.g13-guide p{font-size:13px;line-height:1.5;color:#e4dabd}
+.g13-guide ul{margin:8px 0 12px;padding-left:23px;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:6px;font-size:13px}
+.g13-actions{display:flex;flex-wrap:wrap;gap:9px}
+.g13-guide button,.g13-goal-btn{min-height:44px;border:1px solid #f1d693;border-radius:11px;background:#efcd8d;color:#233824;font-weight:800;padding:9px 12px;cursor:pointer}
+.g13-guide button[data-g13=clear],.g13-guide button[data-g13=album]{background:#35664e;color:#fff2cf;border-color:#7ca98f}
+.g13-goal-btn{display:block;margin:12px 0 1px;width:100%;background:#35553c;color:#fff4d5}
+.g13-goal-btn[aria-pressed=true]{background:#f5d384;color:#223925;outline:2px solid #fff0b7}
+.g3-node-controls button,.chapter-toolbar button,.chapter-jump button{min-height:44px;min-width:44px;touch-action:manipulation}
+@media(max-width:650px){.g13-guide{padding:12px}.g13-guide ul{grid-template-columns:repeat(2,minmax(0,1fr))}.g3-node-controls{gap:8px!important}.g3-node-controls button{font-size:16px!important;min-width:50px!important;min-height:48px!important}.map-viewport{min-height:320px}.chapter-jump button{padding:9px!important}}

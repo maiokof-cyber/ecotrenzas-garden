@@ -4,7 +4,7 @@ import {StyleAtlas} from './StyleAtlas.mjs';
 import { cardArtUrl, cardImageAlt } from '../g6/CardArt.mjs';
 import {SERVICE_FAMILIES,SERVICE_IDS,STORE_SITES,STAMP_COUNT,SERVICE_IG_URL,serviceById,suggestedServices} from '../data/g4-services.js';
 // Single shared GardenGameplay engine; the visual scene never awards rewards directly.
-export function mountGame(TrackSceneClass, FallbackSceneClass = null) {
+export function mountGame(TrackSceneClass, FallbackSceneClass = null, extension = null) {
 const game = new GardenGameplay({ storage: localStorage });
 const atlas = new StyleAtlas({storage:localStorage});
 let scene=null, chapter=0, sceneReady=false, sceneEpoch=0;
@@ -143,7 +143,7 @@ function draft() {
   const s=game.snapshot(),a=atlas.snapshot(),c=CARDS.find(c=>c.id===s.selected),selected=serviceById(a.selectedService);
   return `Hola EcoTienda 🌿. En EcoTrenzas Garden exploré ${selected?.name||'sus peinados'}${c?' y me inspiró la carta de fantasía '+c.name:''}. Me interesa: ${motivation(s.motive)}.${a.preferredSede?' Preferiría la sede '+a.preferredSede+'.':''} ¿Me pueden orientar sobre un servicio real adecuado para mí, su precio vigente y la disponibilidad?`;
 }
-function render(){sceneEpoch++;if(scene){try{scene.destroy()}catch(error){console.warn('G4_RENDERER_CLEANUP',String(error))}scene=null;}sceneReady=false;header();q('main').innerHTML={garden,album,track,style}[tab]();if(tab==='track')mountTrack();}
+function render(){sceneEpoch++;if(scene){try{scene.destroy()}catch(error){console.warn('G4_RENDERER_CLEANUP',String(error))}scene=null;}sceneReady=false;header();q('main').innerHTML={garden,album,track,style}[tab]();if(tab==='track')mountTrack();extension?.decorate?.({game,atlas,tab,chapter,render,toast});}
 function revealCard(cardId){
   const card=CARDS.find(c=>c.id===cardId);if(!card)return;
   // Visual celebration ONLY: no XP, currencies or commercial effects.

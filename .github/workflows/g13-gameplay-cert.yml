@@ -1,0 +1,54 @@
+name: G13 Gameplay and Mobile Cert
+on:
+  push:
+    branches: [lab/g13-gameplay-mobile]
+    paths:
+      - 'lab/senda-premium/**'
+      - '.github/workflows/g13-gameplay-cert.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  g13:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: lab/senda-premium
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Planner and original economy contract
+        run: npm run test:g13:core
+      - name: Build existing G5-G13
+        run: npm run build
+      - name: End to end G13 mobile and desktop WebGL
+        run: |
+          npm run preview -- --host 127.0.0.1 --port 4173 > /tmp/g13-preview.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
+          for i in {1..40}; do
+            if curl -fsS http://127.0.0.1:4173/g13.html > /dev/null; then break; fi
+            sleep 1
+          done
+          xvfb-run -a npm run test:g13:pixi
+      - name: Evidence expires in seven days
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g13-gameplay-mobile-evidence
+          retention-days: 7
+          path: |
+            lab/senda-premium/G13_MAP_*.png
+            lab/senda-premium/G13_FULL_*.png
+            lab/senda-premium/G13_RUNTIME_CERT.json
+          if-no-files-found: ignore
+      - name: Diagnostics on failure
+        if: failure()
+        run: cat /tmp/g13-preview.log || true

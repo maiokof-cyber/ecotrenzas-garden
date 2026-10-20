@@ -1,0 +1,25 @@
+import {GardenGameplay,initialState} from '../src/gameplay/GardenGameplay.mjs';
+import {computeCardPlan,validGoal,firstEmptyPlot} from '../src/g13/G13Planner.mjs';
+import {strict as assert} from 'node:assert';
+let now=Date.UTC(2026,9,20,12,0,0);
+const game=new GardenGameplay({now:()=>now});
+const begin=game.snapshot();
+assert.equal(validGoal('niebla_invernal'),'niebla_invernal');
+assert.equal(validGoal('nonsense'),'');
+let plan=computeCardPlan(begin,'niebla_invernal');
+assert.equal(plan.best.seed,'azul');
+assert.equal(plan.missingTotal,3);
+assert.equal(firstEmptyPlot(game),0);
+assert.equal(game.chooseSeed(plan.best.seed),true);
+assert.equal(game.plant(firstEmptyPlot(game),plan.best.seed),true);
+const planted=game.snapshot();assert.equal(planted.coins,44);assert.equal(planted.xp,0);assert.equal(planted.plots[0].seed,'azul');
+plan=computeCardPlan(planted,'niebla_invernal');assert.equal(plan.best.seed,'violeta');
+assert.equal(plan.missing.find(x=>x.seed==='azul').remainingAfterGrowing,0);
+assert.equal(game.plant(firstEmptyPlot(game),plan.best.seed),true);
+assert.equal(game.snapshot().coins,40);
+plan=computeCardPlan(game.snapshot(),'niebla_invernal');assert.equal(plan.plantedOnly,true);
+// Planning does not produce free rewards. Existing engine actions remain authoritative.
+assert.equal(game.snapshot().xp,0);
+assert.equal(game.snapshot().crystals,0);
+assert.equal(game.snapshot().unlocked.length,0);
+console.log('G13_PLANNER_CORE_GREEN: goal deficits, planted forecasts, 4-coin actions, no duplicated economy');

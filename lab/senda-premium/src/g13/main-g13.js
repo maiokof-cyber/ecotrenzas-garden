@@ -1,0 +1,22 @@
+// G13: one shared gameplay engine, added strategy guide and mobile camera.
+import '../g8/g8.css';
+import '../g9/g9.css';
+import '../g10/g10.css';
+import '../g11/g11.css';
+import '../g12/g12.css';
+import './g13.css';
+import {mountGame} from '../g4/GardenG4UI.js';
+import {TrackG13PixiScene} from './TrackG13PixiScene.js';
+import {TrackG3CanvasScene} from '../g3/TrackG3CanvasScene.js';
+import {createG13Guide} from './G13Guide.js';
+import {installG7Sensory} from '../g7/Sensory.mjs';
+import {installG8World} from '../g8/WorldUI.mjs';
+import {installG9WorldUI} from '../g9/WorldG9UI.js';
+import {installG10WorldUI} from '../g10/WorldG10UI.js';
+import {installG11WorldUI} from '../g11/WorldG11UI.js';
+import {installG12WorldUI} from '../g12/WorldG12UI.js';
+const guide=createG13Guide();
+mountGame(TrackG13PixiScene,TrackG3CanvasScene,guide);
+const sensory=installG7Sensory(),world=installG8World();
+installG9WorldUI();installG10WorldUI();installG11WorldUI();installG12WorldUI();
+window.__GARDEN_G13_TEST__={snapshot:()=>({guide:guide.diagnostics(),sound:sensory.diagnostics(),world:world.diagnostics()})};
