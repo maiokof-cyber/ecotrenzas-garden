@@ -49,13 +49,13 @@ for i in range(62):
   d.ellipse(P((x-rr,y-rr*.24,x+rr,y+rr*.26)),fill=col)
   d.arc(P((x-rr,y-rr*.25,x+rr,y+rr*.27)),190,340,fill=(228,190,119,65),width=2*S)
 # lower elevation cliffs on right with edge highlights, flowers and moss
-for i in range(28):
+for i in range(15):
  x=R.uniform(30,955);y=R.uniform(375,570)
  rr=R.uniform(10,39)
- d.polygon([P(p) for p in [(x-rr,y),(x-rr*.76,y-rr*.6),(x+rr*.5,y-rr*.75),(x+rr,y-rr*.1),(x+rr*.28,y+rr*.35)]],fill=R.choice([(44,65,60,138),(89,91,71,145),(66,75,70,155)]))
- d.line([P((x-rr*.76,y-rr*.6)),P((x+rr*.5,y-rr*.75)),P((x+rr,y-rr*.1))],fill=(207,181,126,90),width=2*S)
+ d.polygon([P(p) for p in [(x-rr,y),(x-rr*.76,y-rr*.6),(x+rr*.5,y-rr*.75),(x+rr,y-rr*.1),(x+rr*.28,y+rr*.35)]],fill=R.choice([(44,65,60,70),(89,91,71,95),(66,75,70,90)]))
+ d.line([P((x-rr*.76,y-rr*.6)),P((x+rr*.5,y-rr*.75)),P((x+rr,y-rr*.1))],fill=(207,181,126,45),width=2*S)
 # painted brush vegetation around the bridge but carefully below node hitboxes
-for i in range(1220):
+for i in range(880):
  x=R.uniform(-8,968);y=R.uniform(330,552)
  # don't busy the interactive path itself
  min_dist=min(math.hypot(x-q[0],y-q[1]) for q in PATH[::12]);
@@ -63,7 +63,7 @@ for i in range(1220):
  rad=R.uniform(1.3,7.2); t=R.random()
  palette=[(26,82,54,185),(57,118,68,177),(92,142,71,145),(130,171,85,115),(181,177,92,110),(224,199,125,95)]
  c=palette[min(5,int(t*len(palette)))]; d.ellipse(P((x-rad*.9,y-rad*.48,x+rad,y+rad*.46)),fill=c)
- if i%19==0:
+ if i%21==0:
   d.line([P((x,y+3)),P((x-2,y-7))],fill=(32,88,65,172),width=2*S)
   color=R.choice([(255,205,158,225),(247,166,202,225),(227,193,255,225)])
   for k in range(5):
@@ -92,15 +92,15 @@ for strand in range(3):
   p1=PATH[max(0,i-1)];p2=PATH[min(len(PATH)-1,i+1)]
   dx=p2[0]-p1[0];dy=p2[1]-p1[1];ll=math.hypot(dx,dy) or 1
   normal=(-dy/ll,dx/ll)
-  offset=11*math.sin(i*.26+strand*math.tau/3)
+  offset=7.5*math.sin(i*.22+strand*math.tau/3)
   q.append((x+offset*normal[0],y+offset*normal[1]+1))
- d.line([P(t) for t in q],fill=[(69,39,27,255),(128,71,36,255),(244,192,104,255)][strand],width=10*S,joint='curve')
- d.line([P((x,y-1.9)) for x,y in q],fill=[(174,113,64,228),(230,154,80,229),(255,229,164,245)][strand],width=3*S,joint='curve')
+ d.line([P(t) for t in q],fill=[(129,82,48,232),(177,113,64,248),(238,184,100,255)][strand],width=7*S,joint='curve')
+ d.line([P((x,y-1.9)) for x,y in q],fill=[(222,162,99,211),(245,200,139,226),(255,236,182,232)][strand],width=2*S,joint='curve')
 # decorative braiding knots along center path with directional stitches
-for j in range(3,len(PATH)-3,7):
+for j in range(3,len(PATH)-3,13):
  x,y=PATH[j];p=PATH[j-2];q=PATH[j+2]; angle=math.atan2(q[1]-p[1],q[0]-p[0]);nx=-math.sin(angle);ny=math.cos(angle)
  r=R.uniform(6,11)
- d.line([P((x-nx*r,y-ny*r+1)),P((x+nx*r,y+ny*r+1))],fill=(67,39,30,160),width=2*S)
+ d.line([P((x-nx*r,y-ny*r+1)),P((x+nx*r,y+ny*r+1))],fill=(248,208,136,92),width=S)
  d.ellipse(P((x-1.8,y-1.8,x+1.8,y+1.8)),fill=(255,232,151,190))
 # small floral vine along margins keeping interactable stone nodes clear
 for idx in range(15,len(PATH)-15,19):

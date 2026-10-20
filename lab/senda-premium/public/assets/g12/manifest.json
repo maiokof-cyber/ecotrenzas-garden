@@ -30,24 +30,24 @@
   "node_layout_modified": false,
   "assets": {
     "terrain_painterly.png": {
-      "bytes": 1052115,
-      "sha256": "7ed99908225c0224933b40a313a0748e19865d023e86f24e6720b7401b674a56",
+      "bytes": 1061908,
+      "sha256": "fe5048f09d1849ad93c1586e96c50b97feeb629f7f772178462528a1739e9f22",
       "dimensions": [
         1920,
         1080
       ]
     },
     "braided_route.png": {
-      "bytes": 133616,
-      "sha256": "26f51447a6aed571221485f6a0018767380d8b303bdd3187c6ac646e2052e83a",
+      "bytes": 126073,
+      "sha256": "2b17dc46d7eeb5e640240c3d0f29ffe7ba385e37e745c2b283c9852cfd970761",
       "dimensions": [
         1920,
         1080
       ]
     },
     "foreground_garden.png": {
-      "bytes": 23362,
-      "sha256": "597cad20e5c3d95ed46df0b7dbf3204d3d8d43bbd0d0e37b4c56e943283bb431",
+      "bytes": 21629,
+      "sha256": "a15a3c198191dbce9136d2a646bee11492963f55246f52b61d38fc2b25105b0a",
       "dimensions": [
         1920,
         1080
